@@ -1,0 +1,27 @@
+%h1 Listing unsolveds
+
+%table
+  %tr
+    %th Priority
+    %th Topic
+    %th Department
+    %th Details
+    %th Status
+    %th
+    %th
+    %th
+
+  - @unsolveds.each do |unsolved|
+    %tr
+      %td= unsolved.priority
+      %td= unsolved.topic
+      %td= unsolved.department
+      %td= unsolved.details
+      %td= unsolved.status
+      %td= link_to 'Show', unsolved
+      %td= link_to 'Edit', edit_unsolved_path(unsolved)
+      %td= link_to 'Destroy', unsolved, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Unsolved', new_unsolved_path

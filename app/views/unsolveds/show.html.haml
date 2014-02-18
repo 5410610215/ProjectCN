@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Priority:
+  = @unsolved.priority
+%p
+  %b Topic:
+  = @unsolved.topic
+%p
+  %b Department:
+  = @unsolved.department
+%p
+  %b Details:
+  = @unsolved.details
+%p
+  %b Status:
+  = @unsolved.status
+
+= link_to 'Edit', edit_unsolved_path(@unsolved)
+\|
+= link_to 'Back', unsolveds_path
