@@ -32,6 +32,9 @@ class UnsolvedsController < ApplicationController
     end
   end
 
+  def edit
+    
+  end
 
   # POST /unsolveds
   # POST /unsolveds.json
@@ -51,6 +54,15 @@ class UnsolvedsController < ApplicationController
   # DELETE /unsolveds/1
   # DELETE /unsolveds/1.json
   
+  def update
+    
+  end
+
+  # DELETE /unsolveds/1
+  # DELETE /unsolveds/1.json
+  def destroy
+   
+  end
 
   private
 

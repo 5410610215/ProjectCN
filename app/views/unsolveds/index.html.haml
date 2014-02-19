@@ -32,6 +32,7 @@
               %center= "UNSOLVED"
           %td{:style => "font-size:17px;;height:30px"}
             %center= link_to 'Delete', unsolved, :method => :delete, :data => { :confirm => 'Are you sure to delete this problem?' }
+          %td= link_to 'Edit', edit_unsolved_path(unsolved)
 
   %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Add new problem', new_unsolved_path
   

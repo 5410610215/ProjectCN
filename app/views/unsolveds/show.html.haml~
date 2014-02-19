@@ -26,7 +26,7 @@
           Department
       %td{:style => "font-size:17px;;height:30px"}
         %center 
-          = @unsolved.department
+          = unsolved_path(Unsolved.find_by_topic(""))
     %tr
       %th{:style => "color:#000000;font-size:25px;width:18%;height:70px"}
         %center 
@@ -38,7 +38,7 @@
       %th{:style => "color:#000000;font-size:25px;width:18%;height:70px"}
         %center 
           Status
-      %td{:style => "font-size:17px;;height:30px"}
+      %td{:style => "font-size:17px;height:30px;color:#FF0000;"}
         %center 
           - if @unsolved.status == 0 
             = "UNSOLVED"
@@ -48,5 +48,5 @@
 
 
   -#  %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Edit', edit_unsolved_path(@unsolved)
-
+  %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Delete', @unsolved, :method => :delete, :data => { :confirm => 'Are you sure to delete this problem?' }
   %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Back', unsolveds_path

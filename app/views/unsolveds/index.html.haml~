@@ -30,7 +30,7 @@
           - if unsolved.status == 0
             %td{:style => "font-size:17px;;height:30px;color:#FF0000"}
               %center= "UNSOLVED"
-          -#%td{:style => "font-size:17px;;height:30px"}
+          %td{:style => "font-size:17px;;height:30px"}
             %center= link_to 'Delete', unsolved, :method => :delete, :data => { :confirm => 'Are you sure to delete this problem?' }
 
   %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Add new problem', new_unsolved_path

@@ -1,5 +1,3 @@
-#Parispan Pansiri    5410610215
-#Phudis   Saweangsuk 5410610793
 module NavigationHelpers
 
   def path_to(page_name)
@@ -10,6 +8,10 @@ module NavigationHelpers
       new_unsolved_path
    when /^the completed Add page for "(.*)"$/i
       unsolveds_path(Unsolved.find_by_topic($1))
+   when /^the edit page for "(.*)"$/i
+      edit_unsolved_path(Unsolved.find_by_topic($1))
+   when /^the show page for "(.*)"$/i
+      unsolved_path(Unsolved.find_by_topic($1))
 
 
     when /^the RottenPotatoes home\s?page$/
