@@ -5,7 +5,7 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
     when /^unsolveds page$/
-      unsolved_path
+      unsolveds_path
    when /^Add problem page$/
       new_unsolved_path
    when /^the completed Add page for "(.*)"$/i

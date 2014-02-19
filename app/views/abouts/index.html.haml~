@@ -2,10 +2,10 @@
   %table
     %tr
       %td
-        %p{:style => "font-size:20px;"}
+        %p{:style => "font-size:20px;font-weight:bold;"}
           %a{:href => "https://github.com/5410610215/Project"} Link to:Github
       %td
-        %p{:style => "font-size:20px;"}
+        %p{:style => "font-size:20px;font-weight:bold;"}
           %a{:href => "https://www.pivotaltracker.com/s/projects/1012438"} Link to:Github
         
 

@@ -2,10 +2,10 @@
   %table
     %tr
       %td
-        %p{:style => "font-size:30px;"}
+        %p{:style => "font-size:30px;font-weight:bold;"}
           = link_to "Unsolved", unsolveds_path
       %td
-        %p{:style => "font-size:30px;"}
+        %p{:style => "font-size:30px;font-weight:bold;"}
           = link_to "About", abouts_path
 
 

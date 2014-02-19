@@ -9,7 +9,7 @@ module NavigationHelpers
    when /^Add problem page$/
       new_unsolved_path
    when /^the completed Add page for "(.*)"$/i
-      unsolveds_path(Unsolved.find_by_topic($1))
+      unsolveds_path(Unsolved.find_by_title($1))
 
 
     when /^the RottenPotatoes home\s?page$/

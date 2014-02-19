@@ -1,5 +1,7 @@
-%h1 New unsolved
+%body{:style => "background-color:#EEEEEE;"}
+%center
+  %h1{:style => "color:#157DEC;font-size:40px;"}  Add new Problem to Problempedia
 
-= render 'form'
+  = render 'form'
 
-= link_to 'Back', unsolveds_path
+  %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Back to Listing Unsolved Problem', unsolveds_path
