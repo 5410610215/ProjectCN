@@ -8,8 +8,8 @@
         %p{:style => "font-size:15px;font-weight:bold;"}
           %a{:href => "https://www.pivotaltracker.com/s/projects/1012438"} Link to:Pivotaltracker
         
-%hr
-%body{:style => "background-color:#EEEEEE;"}
+%body{:style => "background-image:url(assets/tail-middle.jpg);background-position:center;background-repeat:no-repeat;background-attachment:fixed; "}
+
 %center
   %h1{:style => "color:#157DEC;font-size:100px;"} PROBLEMPEDIA
   %table{:style => "color:#1874CD;"}
@@ -34,9 +34,6 @@
       %td{:style => "font-size:25px;"} Suebsantiworapong
       %td{:style => "font-size:25px;"} 5410611296
 
-%pre
-
-
 
 %center
   %table
@@ -57,7 +54,6 @@
         %center 
           %img{src: "assets/Form.jpg"}
 
-%pre
 
 %center  
   %table{:border => "0"}
@@ -138,9 +134,6 @@
             As an everyone
             So that I can see the solved problem
             I want to see the solved problem  
-%pre
-
-
 
 %center
   %table

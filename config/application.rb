@@ -1,5 +1,4 @@
-#นายพริษฐ์พันธุ์ พันธุ์ศิริ 5410610215
-#นายศุภณัฐ เลิศการณ์ 5410610165
+
 require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:

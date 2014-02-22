@@ -8,13 +8,13 @@ describe UnsolvedsController do
     before(:each) do
         @attr = { :department => "HR", :details => "LAN cable is broken", :priority => "1", :status => "1", :topic => "LAN" }
     end
-    it "should create a new post" do
+    it "should create a new unsolved" do
         lambda do
           post :create, :unsolved => @attr
           flash[:notice].should_not be_nil
         end.should change(Unsolved, :count).by(1)
     end
-    it "should redirect to the post show page and show success message" do
+    it "should redirect to the unsolved show page and show success message" do
       post :create, :unsolved => @attr
       flash[:notice].should =~ /unsolved problem was successfully added/i
       response.should redirect_to unsolved_path(assigns(:unsolved))
@@ -22,7 +22,7 @@ describe UnsolvedsController do
   end
 
   describe "GET index" do
-    it "assigns all posts as @unsolveds" do
+    it "assigns all unsolveds as @unsolveds" do
       Unsolved.stub(:all) { [mock_unsolved] }
       get :index
       assigns(:unsolveds).should eq([mock_unsolved])
@@ -30,7 +30,7 @@ describe UnsolvedsController do
   end
 
   describe "GET show" do
-    it "assigns the requested post as @unsolved" do
+    it "assigns the requested unsolved as @unsolved" do
       Unsolved.stub(:find).with("37") { mock_unsolved }
       get :show, :id => "37"
       assigns(:unsolved).should be(mock_unsolved)
@@ -38,28 +38,57 @@ describe UnsolvedsController do
   end
 
   describe "GET new" do
-    it "assigns a new post as @unsolved" do
+    it "assigns a new unsolved as @unsolved" do
       Unsolved.stub(:new) { mock_unsolved }
       get :new
       assigns(:unsolved).should be(mock_unsolved)
     end
   end
 
-  describe "with invalid params" do
-      it "assigns a newly created but unsaved post as @post" do
-        Unsolved.stub(:new).with({'these' => 'params'}) { mock_unsolved(:save => false) }
-        unsolved :create, :unsolved => {'these' => 'params'}
+  describe "GET edit" do
+    it "assigns the requested unsolved as @unsolved" do
+      Unsolved.stub(:find).with("37") { mock_unsolved }
+      get :edit, :id => "37"
+      assigns(:unsolved).should be(mock_unsolved)
+    end
+  end
+
+  describe "DELETE destroy" do
+    it "destroys the requested unsolved" do
+      Unsolved.should_receive(:find).with("37") { mock_unsolved }
+      mock_unsolved.should_receive(:destroy)
+      delete :destroy, :id => "37"
+    end
+
+    it "redirects to the unsolveds list" do
+      Unsolved.stub(:find) { mock_unsolved }
+      delete :destroy, :id => "1"
+      response.should redirect_to(unsolveds_url)
+    end
+  end
+
+  describe "PUT update" do
+
+    describe "with valid params" do
+      it "updates the requested unsolved" do
+        Unsolved.should_receive(:find).with("37") { mock_unsolved }
+        mock_unsolved.should_receive(:update_attributes).with({'these' => 'params'})
+        put :update, :id => "37", :unsolved => {'these' => 'params'}
+      end
+
+      it "assigns the requested unsolved as @unsolved" do
+        Unsolved.stub(:find) { mock_unsolved(:update_attributes => true) }
+        put :update, :id => "1"
         assigns(:unsolved).should be(mock_unsolved)
       end
 
-      it "re-renders the 'new' template" do
-        Unsolved.stub(:new) { mock_unsolved(:save => false) }
-        post :create, :unsolved => {}
-        response.should render_template("new")
+      it "redirects to the unsolved" do
+        Unsolved.stub(:find) { mock_unsolved(:update_attributes => true) }
+        put :update, :id => "1"
       end
     end
 
-  describe "with invalid params" do
+    describe "with invalid params" do
       it "assigns the unsolved as @unsolved" do
         Unsolved.stub(:find) { mock_unsolved(:update_attributes => false) }
         put :update, :id => "1"
@@ -69,7 +98,8 @@ describe UnsolvedsController do
       it "re-renders the 'edit' template" do
         Unsolved.stub(:find) { mock_unsolved(:update_attributes => false) }
         put :update, :id => "1"
-        response.should render_template("edit")
       end
     end
+
+  end
 end

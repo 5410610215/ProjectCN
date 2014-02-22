@@ -1,6 +1,12 @@
 #นายพริษฐ์พันธุ์ พันธุ์ศิริ 5410610215
 #นายศุภณัฐ เลิศการณ์ 5410610165
 Blog::Application.routes.draw do
+  resources :abouts
+
+
+  resources :unsolveds
+
+
   get "problempedia/index"
 
  resources :posts do
@@ -59,7 +65,7 @@ end
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'welcome#index'
+   root :to => 'problempedia#index'
 
   # See how all your routes lay out with "rake routes"
 

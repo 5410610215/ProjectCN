@@ -32,8 +32,8 @@ class UnsolvedsController < ApplicationController
     end
   end
 
-  def edit
-    
+ def edit
+    @unsolved = Unsolved.find(params[:id])
   end
 
   # POST /unsolveds
@@ -55,15 +55,27 @@ class UnsolvedsController < ApplicationController
   # DELETE /unsolveds/1.json
   
   def update
-    
+    @unsolved = Unsolved.find(params[:id])
+
+    respond_to do |format|
+      if @unsolved.update_attributes(params[:unsolved])
+        format.html { redirect_to @unsolved, notice: 'Unsolved was successfully updated.' }
+        format.json { head :no_content }
+      end
+    end
   end
 
   # DELETE /unsolveds/1
   # DELETE /unsolveds/1.json
   def destroy
-   
-  end
+    @unsolved = Unsolved.find(params[:id])
+    @unsolved.destroy
 
+    respond_to do |format|
+      format.html { redirect_to unsolveds_url }
+      format.json { head :no_content }
+    end
+  end
   private
 
     # Use this method to whitelist the permissible parameters. Example:

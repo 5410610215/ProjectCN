@@ -1,4 +1,4 @@
-%body{:style => "background-color:#EEEEEE;"}
+%body{:style => "background-image:url(assets/tail-middle.jpg);background-position:center;background-repeat:no-repeat;background-attachment:fixed; "}
 %center
   %p{:style => "color:#00DD00;font-size:25px;"}
     = notice
@@ -8,7 +8,7 @@
         %center 
           Priority
       %td{:style => "font-size:17px;;height:30px"}
-        %center
+        %center 
           - if @unsolved.priority == 1 
             = "LOW"
           - else

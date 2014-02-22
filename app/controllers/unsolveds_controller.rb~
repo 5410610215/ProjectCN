@@ -32,7 +32,7 @@ class UnsolvedsController < ApplicationController
     end
   end
 
-  def edit
+ def edit
     @unsolved = Unsolved.find(params[:id])
   end
 
@@ -61,9 +61,6 @@ class UnsolvedsController < ApplicationController
       if @unsolved.update_attributes(unsolved_params)
         format.html { redirect_to @unsolved, notice: 'Unsolved was successfully updated.' }
         format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @unsolved.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -79,7 +76,6 @@ class UnsolvedsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
   private
 
     # Use this method to whitelist the permissible parameters. Example:

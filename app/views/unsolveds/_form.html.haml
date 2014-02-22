@@ -5,19 +5,20 @@
       %ul
         - @unsolved.errors.full_messages.each do |msg|
           %li= msg
-  .field
-    = f.label :priority
-    = f.select 'priority', [['Low', 1], ['High', 2]]
-  .field
-    = f.label :topic
-    = f.text_field :topic
-  .field
-    = f.label :department
-    = f.text_field :department
-  .field
-    = f.label :details
-    = f.text_area :details
-  .field
-    = f.number_field :status, :value => 0, :style => "display:none"
+  %table{:border => "0"}
+    %tr.field
+      %td= f.label :priority
+      %td= f.select 'priority', [['Low', 1], ['High', 2]]
+    %tr.field
+      %td= f.label :topic
+      %td= f.text_field :topic
+    %tr.field
+      %td= f.label :department
+      %td= f.text_field :department
+    %tr.field
+      %td= f.label :details
+      %td= f.text_area :details
+    %tr.field
+      %td= f.number_field :status, :value => 0, :style => "display:none"
   .actions
     = f.submit 'Save'

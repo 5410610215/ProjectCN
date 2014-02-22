@@ -1,4 +1,4 @@
-%body{:style => "background-color:#EEEEEE;"}
+%body{:style => "background-image:url(assets/tail-middle.jpg);background-position:center;background-repeat:no-repeat;background-attachment:fixed; "}
 %center
   %p{:style => "color:#00DD00;font-size:25px;"}
     = notice
@@ -8,7 +8,7 @@
         %center 
           Priority
       %td{:style => "font-size:17px;;height:30px"}
-        %center
+        %center 
           - if @unsolved.priority == 1 
             = "LOW"
           - else
@@ -26,7 +26,7 @@
           Department
       %td{:style => "font-size:17px;;height:30px"}
         %center 
-          = unsolved_path(Unsolved.find_by_topic(""))
+          = @unsolved.department
     %tr
       %th{:style => "color:#000000;font-size:25px;width:18%;height:70px"}
         %center 
@@ -38,7 +38,7 @@
       %th{:style => "color:#000000;font-size:25px;width:18%;height:70px"}
         %center 
           Status
-      %td{:style => "font-size:17px;height:30px;color:#FF0000;"}
+      %td{:style => "font-size:17px;;height:30px"}
         %center 
           - if @unsolved.status == 0 
             = "UNSOLVED"
