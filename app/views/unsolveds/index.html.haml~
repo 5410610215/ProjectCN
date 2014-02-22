@@ -9,12 +9,13 @@
 
   %table{:border => "1"}
     %tr
-      %th{:style => "color:#000000;font-size:25px;width:170px;height:70px"} Priority
+      %th{:style => "color:#000000;font-size:25px;width:140px;height:70px"} Priority
       %th{:style => "color:#000000;font-size:25px;width:200px;height:70px"} Date
-      %th{:style => "color:#000000;font-size:25px;width:150px;height:70px"} Topic
-      %th{:style => "color:#000000;font-size:25px;width:150px;height:70px"} Department
-      %th{:style => "color:#000000;font-size:25px;width:150px;height:70px"} Status
-      %th{:style => "color:#000000;font-size:25px;width:150px;height:70px"} Delete
+      %th{:style => "color:#000000;font-size:25px;width:120px;height:70px"} Topic
+      %th{:style => "color:#000000;font-size:25px;width:130px;height:70px"} Department
+      %th{:style => "color:#000000;font-size:25px;width:120px;height:70px"} Status
+      %th{:style => "color:#000000;font-size:25px;width:120px;height:70px"} Delete
+      %th{:style => "color:#000000;font-size:25px;width:120px;height:70px"} Edit
     - @unsolveds.each do |unsolved|
       %tr
         - if unsolved.status == 0
@@ -35,7 +36,8 @@
               %center= "UNSOLVED"
           %td{:style => "font-size:17px;;height:30px"}
             %center= link_to 'Delete', unsolved, :method => :delete, :data => { :confirm => 'Are you sure to delete this problem?' }
-          %td= link_to 'Edit', edit_unsolved_path(unsolved)
-
+          %td{:style => "font-size:17px;;height:30px"}
+            %center= link_to 'Edit', edit_unsolved_path(unsolved)
+          
   %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Add new problem', new_unsolved_path
   
