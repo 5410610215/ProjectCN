@@ -1,5 +1,11 @@
 
 Blog::Application.routes.draw do
+  resources :solutions
+
+
+  resources :solveds
+
+
   resources :abouts
 
 
@@ -7,6 +13,9 @@ Blog::Application.routes.draw do
 
 
   get "problempedia/index"
+  get "solveds/delete/:id", to: "unsolveds#destroy_solved"
+  get "new_solution/:id", to: "solutions#new_solution"
+  get "unsolveds/new_solution/:id", to: "solutions#new_solution"
 
  resources :posts do
   resources :comments
@@ -14,6 +23,7 @@ end
 
 
   get "welcome/index"
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

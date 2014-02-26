@@ -38,16 +38,13 @@
       %th{:style => "color:#000000;font-size:25px;width:18%;height:70px"}
         %center 
           Status
-      %td{:style => "font-size:17px;height:30px;color:#FF0000;"}
+      %td{:style => "font-size:17px;height:30px;color:#00FF33;"}
         %center 
-          - if @unsolved.status == 0 
-            = "UNSOLVED"
-          - else
+          - if @unsolved.status == 1 
             = "SOLVED"
-- if @unsolved.status == 0
-        
-  %center
-    %a{:href => "new_solution/" + @unsolved.id.to_s} Add Solution to this problem
+          - else
+            = "UNSOLVED"
+
 %table
   %tr
     %th Topic
@@ -77,9 +74,7 @@
           %td= link_to 'Destroy', solution, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 
+  
+  %a{:href => "delete/" + @unsolved.id.to_s, :data => { :confirm => 'Are you sure to delete this problem?' }} Delete     
+  %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Back', solveds_path
 
-
-
-  -#  %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Edit', edit_unsolved_path(@unsolved)
-  %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Delete', @unsolved, :method => :delete, :data => { :confirm => 'Are you sure to delete this problem?' }
-  %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Back', unsolveds_path

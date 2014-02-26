@@ -12,6 +12,12 @@ module NavigationHelpers
       edit_unsolved_path(Unsolved.find_by_topic($1))
    when /^the show page for "(.*)"$/i
       unsolved_path(Unsolved.find_by_topic($1))
+#
+   when /^the detail page for "(.*)"$/i
+      unsolved_path(Unsolved.find_by_topic($1))
+   when /^solveds page$/
+      solveds_path
+
 
 
     when /^the RottenPotatoes home\s?page$/

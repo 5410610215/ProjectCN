@@ -2,7 +2,7 @@ class UnsolvedsController < ApplicationController
   # GET /unsolveds
   # GET /unsolveds.json
   def index
-    @unsolveds = Unsolved.all
+    @unsolveds = Unsolved.order('priority desc')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -64,7 +64,6 @@ class UnsolvedsController < ApplicationController
       end
     end
   end
-
   # DELETE /unsolveds/1
   # DELETE /unsolveds/1.json
   def destroy
@@ -73,6 +72,15 @@ class UnsolvedsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to unsolveds_url }
+      format.json { head :no_content }
+    end
+  end
+  def destroy_solved
+    @unsolved = Unsolved.find(params[:id])
+    @unsolved.destroy
+
+    respond_to do |format|
+      format.html { redirect_to solveds_url }
       format.json { head :no_content }
     end
   end

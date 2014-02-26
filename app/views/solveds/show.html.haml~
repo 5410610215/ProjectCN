@@ -44,42 +44,9 @@
             = "UNSOLVED"
           - else
             = "SOLVED"
-- if @unsolved.status == 0
-        
-  %center
-    %a{:href => "new_solution/" + @unsolved.id.to_s} Add Solution to this problem
-%table
-  %tr
-    %th Topic
-    %th Solution
-    %th User
-    %th Worked
-    %th Delete
-
-  - @solutions = Solution.all
-  - @solutions.each do |solution|
-    - if solution.topic_id == @unsolved.id
-      - if solution.worked == 1
-        %tr
-          %td= solution.topic_id
-          %td= solution.solution
-          %td= solution.user
-          %td= "Finish Job"
-          %td= link_to 'Destroy', solution, :method => :delete, :data => { :confirm => 'Are you sure?' }
-  - @solutions.each do |solution|
-    - if solution.topic_id == @unsolved.id
-      - if solution.worked == 0
-        %tr
-          %td= solution.topic_id
-          %td= solution.solution
-          %td= solution.user
-          %td= "Just Recommend"
-          %td= link_to 'Destroy', solution, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 
 
-
-
-  -#  %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Edit', edit_unsolved_path(@unsolved)
-  %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Delete', @unsolved, :method => :delete, :data => { :confirm => 'Are you sure to delete this problem?' }
-  %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Back', unsolveds_path
+  
+            %a{:href => "delete/" + @unsolved.id.to_s, :data => { :confirm => 'Are you sure to delete this problem?' }} Delete
+  %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Back', solveds_path

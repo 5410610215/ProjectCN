@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Topic:
+  = @solution.topic_id
+%p
+  %b Solution:
+  = @solution.solution
+%p
+  %b User:
+  = @solution.user
+%p
+  %b Worked:
+  = @solution.worked
+
+
+
+= link_to 'Back', unsolved_path(@solution.topic_id)

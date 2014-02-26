@@ -58,7 +58,7 @@ class UnsolvedsController < ApplicationController
     @unsolved = Unsolved.find(params[:id])
 
     respond_to do |format|
-      if @unsolved.update_attributes(unsolved_params)
+      if @unsolved.update_attributes(params[:unsolved])
         format.html { redirect_to @unsolved, notice: 'Unsolved was successfully updated.' }
         format.json { head :no_content }
       end

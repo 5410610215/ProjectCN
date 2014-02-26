@@ -1,13 +1,18 @@
-#นายพริษฐ์พันธุ์ พันธุ์ศิริ 5410610215
-#นายศุภณัฐ เลิศการณ์ 5410610165
+
 Blog::Application.routes.draw do
+  resources :solutions
+
+
+  resources :solveds
+
+
   resources :abouts
 
 
   resources :unsolveds
 
 
-  get "problempedia/index"
+  get "problempedia/index/:id", to: "unsolveds#test"
 
  resources :posts do
   resources :comments
@@ -15,6 +20,7 @@ end
 
 
   get "welcome/index"
+  get "welcome/test", to: "unsolveds#test"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

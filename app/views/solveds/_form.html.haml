@@ -1,0 +1,24 @@
+= form_for @unsolved do |f|
+  - if @unsolved.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@unsolved.errors.count, "error")} prohibited this unsolved from being saved:"
+      %ul
+        - @unsolved.errors.full_messages.each do |msg|
+          %li= msg
+  %table{:border => "0"}
+    %tr.field
+      %td= f.label :priority
+      %td= f.select 'priority', [['Low', 1], ['High', 2]]
+    %tr.field
+      %td= f.label :topic
+      %td= f.text_field :topic
+    %tr.field
+      %td= f.label :department
+      %td= f.text_field :department
+    %tr.field
+      %td= f.label :details
+      %td= f.text_area :details
+    %tr.field
+      %td= f.number_field :status, :value => 0, :style => "display:none"
+  .actions
+    = f.submit 'Save'

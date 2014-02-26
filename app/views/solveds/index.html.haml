@@ -4,7 +4,7 @@
 %center
   %p{:style => "color:#157DEC;font-size:40px;font-family:Arial,Helvetica,sans-serif;"} 
     Listing 
-    %span{:style => "color:#FF0000;font-size:40px;"}Unsolved 
+    %span{:style => "color:#00FF33;font-size:40px;"}Solved 
     Problem on Problempedia
 
   %table{:border => "1", :style => "border-collapse: collapse"}
@@ -14,12 +14,11 @@
       %th{:style => "color:#000000;font-size:25px;width:120px;height:70px"} Topic
       %th{:style => "color:#000000;font-size:25px;width:130px;height:70px"} Department
       %th{:style => "color:#000000;font-size:25px;width:120px;height:70px"} Status
-      %th{:style => "color:#000000;font-size:25px;width:120px;height:70px"} Detail
+      %th{:style => "color:#000000;font-size:25px;width:120px;height:70px"} More Detail
       %th{:style => "color:#000000;font-size:25px;width:120px;height:70px"} Delete
-      %th{:style => "color:#000000;font-size:25px;width:120px;height:70px"} Edit
     - @unsolveds.each do |unsolved|
       %tr
-        - if unsolved.status == 0
+        - if unsolved.status == 1
           - if unsolved.priority == 1
             %td{:style => "font-size:17px;;height:30px"}
               %center= "LOW"
@@ -32,17 +31,16 @@
             %center= unsolved.topic
           %td{:style => "font-size:17px;;height:30px"}
             %center= unsolved.department
-          - if unsolved.status == 0
-            %td{:style => "font-size:17px;;height:30px;color:#FF0000"}
-              %center= "UNSOLVED"
+          - if unsolved.status == 1
+            %td{:style => "font-size:17px;;height:30px;color:#00FF33"}
+              %center= "SOLVED"
           %td
             %center
-              %a{:href => "unsolveds/" + unsolved.id.to_s} Detail
+              %a{:href => "solveds/" + unsolved.id.to_s} Detail
           %td{:style => "font-size:17px;;height:30px"}
-            %center= link_to 'Delete', unsolved, :method => :delete, :data => { :confirm => 'Are you sure to delete this problem?' }
-          %td{:style => "font-size:17px;;height:30px"}
-            %center= link_to 'Edit', edit_unsolved_path(unsolved)
-
+            / %center= link_to 'Delete', unsolved, :method => :delete, :data => { :confirm => 'Are you sure to delete this problem?' }
+            %center
+              %a{:href => "solveds/delete/" + unsolved.id.to_s, :data => { :confirm => 'Are you sure to delete this problem?' }} Delete
           
-  %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Add new problem', new_unsolved_path
+
   

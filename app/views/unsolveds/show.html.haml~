@@ -38,12 +38,33 @@
       %th{:style => "color:#000000;font-size:25px;width:18%;height:70px"}
         %center 
           Status
-      %td{:style => "font-size:17px;;height:30px"}
+      %td{:style => "font-size:17px;height:30px;color:#FF0000;"}
         %center 
           - if @unsolved.status == 0 
             = "UNSOLVED"
           - else
             = "SOLVED"
+
+%table
+  %tr
+    %th Topic
+    %th Solution
+    %th User
+    %th Worked
+    %th
+    %th
+    %th
+  - @solutions = Unsolved.all
+  - @solutions.each do |solution|
+    %tr
+      %td= solution.topic_id
+      %td= solution.solution
+      %td= solution.user
+      %td= solution.worked
+      %td= link_to 'Show', solution
+      %td= link_to 'Edit', edit_solution_path(solution)
+      %td= link_to 'Destroy', solution, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
 
 
 
