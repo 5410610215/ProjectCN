@@ -7,9 +7,4 @@ describe "solveds/index" do
       stub_model(Solved)
     ])
   end
-
-  it "renders a list of solveds" do
-    render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-  end
 end

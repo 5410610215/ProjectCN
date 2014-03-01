@@ -1,8 +1,74 @@
-%body{:style => "background-color:#EEEEEE;"}
-%center
-  %h1{:style => "color:#157DEC;font-size:40px;"}  Add new Problem to Problempedia
-  %hr
+!!!
+%html{:lang => "en"}
+  %head
+    %title PROBLEMPEDIA | About Us
+    %meta{:charset => "utf-8"}
+    %link{:href => "assets/reset.css", :media => "all", :rel => "stylesheet", :type => "text/css"}
+      %link{:href => "assets/style.css", :media => "all", :rel => "stylesheet", :type => "text/css"}
+        %script{:src => "assets/jquery-1.4.2.min.js", :type => "text/javascript"}
+        %script{:src => "assets/cufon-yui.js", :type => "text/javascript"}
+        %script{:src => "assets/cufon-replace.js", :type => "text/javascript"}
+        %script{:src => "assets/Myriad_Pro_300.font.js", :type => "text/javascript"}
+        %script{:src => "assets/Myriad_Pro_400.font.js", :type => "text/javascript"}
+        %script{:src => "assets/script.js", :type => "text/javascript"}
+          :css
+            color:red;
+  %body#page6
+    / START PAGE SOURCE
+    .wrap
+      %header
+        .container
+          %h1
+            %a{:href => "#"} PROBLEMPEDIA
+          %nav
+            %ul
+              %li
+                %a.m1{:href => "/problempedia"} Home Page
+              %li.current
+                %a.m2{:href => "/abouts"} PROBLEM
+              %li
+                %a.m3{:href => "/abouts"} SEARCH PROBLEM
+              %li
+                %a.m4{:href => "/abouts"} RULES
+              %li.last
+                %a.m5{:href => "/abouts"} ABOUT US
 
-  = render 'form'
+          %form#search-form{:action => "#"}
+            %fieldset
+              .rowElem
+                %input{:type => "text"}
+                  %a{:href => "#"} Search
 
-  %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Back to Listing Unsolved Problem', unsolveds_path
+      .container
+        %aside
+          %h3 Categories
+          %ul.categories
+            %li
+              %span
+                %a{:href => "/unsolveds"} Unsolved Problem
+            %li
+              %span
+                %a{:href => "/solveds"} Solved Problem
+            %li
+              %span
+                %a{:href => "#"} Search Problem
+            %li
+              %span
+                %a{:href => "#"} Rules
+            %li
+              %span
+                %a{:href => "#"} More About Us
+          
+        %section#content
+
+          %center
+            %h1
+              Add new Problem to Problempedia
+            
+            
+              = render 'form'
+            
+              %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Back to Listing Unsolved Problem',   unsolveds_path
+                               
+             
+     

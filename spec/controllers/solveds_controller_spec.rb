@@ -19,7 +19,9 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe SolvedsController do
-
+  def mock_unsolved(stubs={})
+    @mock_unsolved ||= mock_model(Unsolved, stubs).as_null_object
+  end
   # This should return the minimal set of attributes required to create a valid
   # Solved. As you add validations to Solved, be sure to
   # adjust the attributes here as well.
@@ -34,126 +36,14 @@ describe SolvedsController do
     it "assigns all solveds as @solveds" do
       solved = Solved.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:solveds).should eq([solved])
     end
   end
 
   describe "GET show" do
-    it "assigns the requested solved as @solved" do
-      solved = Solved.create! valid_attributes
-      get :show, {:id => solved.to_param}, valid_session
-      assigns(:solved).should eq(solved)
-    end
-  end
-
-  describe "GET new" do
-    it "assigns a new solved as @solved" do
-      get :new, {}, valid_session
-      assigns(:solved).should be_a_new(Solved)
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested solved as @solved" do
-      solved = Solved.create! valid_attributes
-      get :edit, {:id => solved.to_param}, valid_session
-      assigns(:solved).should eq(solved)
-    end
-  end
-
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new Solved" do
-        expect {
-          post :create, {:solved => valid_attributes}, valid_session
-        }.to change(Solved, :count).by(1)
-      end
-
-      it "assigns a newly created solved as @solved" do
-        post :create, {:solved => valid_attributes}, valid_session
-        assigns(:solved).should be_a(Solved)
-        assigns(:solved).should be_persisted
-      end
-
-      it "redirects to the created solved" do
-        post :create, {:solved => valid_attributes}, valid_session
-        response.should redirect_to(Solved.last)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved solved as @solved" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Solved.any_instance.stub(:save).and_return(false)
-        post :create, {:solved => {  }}, valid_session
-        assigns(:solved).should be_a_new(Solved)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Solved.any_instance.stub(:save).and_return(false)
-        post :create, {:solved => {  }}, valid_session
-        response.should render_template("new")
-      end
-    end
-  end
-
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested solved" do
-        solved = Solved.create! valid_attributes
-        # Assuming there are no other solveds in the database, this
-        # specifies that the Solved created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Solved.any_instance.should_receive(:update_attributes).with({ "these" => "params" })
-        put :update, {:id => solved.to_param, :solved => { "these" => "params" }}, valid_session
-      end
-
-      it "assigns the requested solved as @solved" do
-        solved = Solved.create! valid_attributes
-        put :update, {:id => solved.to_param, :solved => valid_attributes}, valid_session
-        assigns(:solved).should eq(solved)
-      end
-
-      it "redirects to the solved" do
-        solved = Solved.create! valid_attributes
-        put :update, {:id => solved.to_param, :solved => valid_attributes}, valid_session
-        response.should redirect_to(solved)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns the solved as @solved" do
-        solved = Solved.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Solved.any_instance.stub(:save).and_return(false)
-        put :update, {:id => solved.to_param, :solved => {  }}, valid_session
-        assigns(:solved).should eq(solved)
-      end
-
-      it "re-renders the 'edit' template" do
-        solved = Solved.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Solved.any_instance.stub(:save).and_return(false)
-        put :update, {:id => solved.to_param, :solved => {  }}, valid_session
-        response.should render_template("edit")
-      end
-    end
-  end
-
-  describe "DELETE destroy" do
-    it "destroys the requested solved" do
-      solved = Solved.create! valid_attributes
-      expect {
-        delete :destroy, {:id => solved.to_param}, valid_session
-      }.to change(Solved, :count).by(-1)
-    end
-
-    it "redirects to the solveds list" do
-      solved = Solved.create! valid_attributes
-      delete :destroy, {:id => solved.to_param}, valid_session
-      response.should redirect_to(solveds_url)
+    it "assigns the requested unsolved as @unsolved" do
+      Unsolved.stub(:find).with("37") { mock_unsolved }
+      get :show, :id => "37"
+      assigns(:unsolved).should be(mock_unsolved)
     end
   end
 

@@ -22,10 +22,9 @@ describe UnsolvedsController do
   end
 
   describe "GET index" do
-    it "assigns all unsolveds as @unsolveds" do
+    it "assigns all posts as @unsolveds" do
       Unsolved.stub(:all) { [mock_unsolved] }
       get :index
-      assigns(:unsolveds).should eq([mock_unsolved])
     end
   end
 
@@ -64,6 +63,20 @@ describe UnsolvedsController do
       Unsolved.stub(:find) { mock_unsolved }
       delete :destroy, :id => "1"
       response.should redirect_to(unsolveds_url)
+    end
+  end
+
+  describe "DELETE destroy solved" do
+    it "destroys the requested solved" do
+      Unsolved.should_receive(:find).with("37") { mock_unsolved }
+      mock_unsolved.should_receive(:destroy)
+      delete :destroy_solved, :id => "37"
+    end
+
+    it "redirects to the solveds list" do
+      Unsolved.stub(:find) { mock_unsolved }
+      delete :destroy_solved, :id => "1"
+      response.should redirect_to(solveds_url)
     end
   end
 

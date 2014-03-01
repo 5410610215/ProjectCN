@@ -1,0 +1,8 @@
+.table-border{
+  border:1px solid;
+  text-align:center;
+  vertical-align:middle;
+}
+tr th{
+  line-height:4.5em;
+}

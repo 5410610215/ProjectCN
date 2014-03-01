@@ -1,43 +1,113 @@
-%body{:style => "background-image:url(assets/tail-middle.jpg);background-position:center;background-repeat:no-repeat;background-attachment:fixed; "}
+!!!
+%html{:lang => "en"}
+  %head
+    %title PROBLEMPEDIA | About Us
+    %meta{:charset => "utf-8"}
+    %link{:href => "assets/reset.css", :media => "all", :rel => "stylesheet", :type => "text/css"}
+      %link{:href => "assets/style.css", :media => "all", :rel => "stylesheet", :type => "text/css"}
+      %link{:href => "assets/table_style.css", :media => "all", :rel => "stylesheet", :type => "text/css"}
+        %script{:src => "assets/jquery-1.4.2.min.js", :type => "text/javascript"}
+        %script{:src => "assets/cufon-yui.js", :type => "text/javascript"}
+        %script{:src => "assets/cufon-replace.js", :type => "text/javascript"}
+        %script{:src => "assets/Myriad_Pro_300.font.js", :type => "text/javascript"}
+        %script{:src => "assets/Myriad_Pro_400.font.js", :type => "text/javascript"}
+        %script{:src => "assets/script.js", :type => "text/javascript"}
+          :css
+            color:red;
 
+  %body#page6
+    / START PAGE SOURCE
+    .wrap
+      %header
+        .container
+          %h1
+            %a{:href => "#"} PROBLEMPEDIA
+          %nav
+            %ul
+              %li
+                %a.m1{:href => "/problempedia"} Home Page
+              %li.current
+                %a.m2{:href => "/abouts"} PROBLEM
+              %li
+                %a.m3{:href => "/abouts"} SEARCH PROBLEM
+              %li
+                %a.m4{:href => "/abouts"} RULES
+              %li.last
+                %a.m5{:href => "/abouts"} ABOUT US
 
-%center
-  %p{:style => "color:#157DEC;font-size:40px;font-family:Arial,Helvetica,sans-serif;"} 
-    Listing 
-    %span{:style => "color:#FF0000;font-size:40px;"}Unsolved 
-    Problem on Problempedia
+          %form#search-form{:action => "#"}
+            %fieldset
+              .rowElem
+                %input{:type => "text"}
+                  %a{:href => "#"} Search
 
-  %table{:border => "1"}
-    %tr
-      %th{:style => "color:#000000;font-size:25px;width:140px;height:70px"} Priority
-      %th{:style => "color:#000000;font-size:25px;width:200px;height:70px"} Date
-      %th{:style => "color:#000000;font-size:25px;width:120px;height:70px"} Topic
-      %th{:style => "color:#000000;font-size:25px;width:130px;height:70px"} Department
-      %th{:style => "color:#000000;font-size:25px;width:120px;height:70px"} Status
-      %th{:style => "color:#000000;font-size:25px;width:120px;height:70px"} Delete
-      %th{:style => "color:#000000;font-size:25px;width:120px;height:70px"} Edit
-    - @unsolveds.each do |unsolved|
-      %tr
-        - if unsolved.status == 0
-          - if unsolved.priority == 1
-            %td{:style => "font-size:17px;;height:30px"}
-              %center= "LOW"
-          - else 
-            %td{:style => "font-size:17px;;height:30px"}
-              %center= "HIGH"
-          %td{:style => "font-size:17px;;height:30px"}
-            %center= unsolved.created_at
-          %td{:style => "font-size:17px;;height:30px"}
-            %center= unsolved.topic
-          %td{:style => "font-size:17px;;height:30px"}
-            %center= unsolved.department
-          - if unsolved.status == 0
-            %td{:style => "font-size:17px;;height:30px;color:#FF0000"}
-              %center= "UNSOLVED"
-          %td{:style => "font-size:17px;;height:30px"}
-            %center= link_to 'Delete', unsolved, :method => :delete, :data => { :confirm => 'Are you sure to delete this problem?' }
-          %td{:style => "font-size:17px;;height:30px"}
-            %center= link_to 'Edit', edit_unsolved_path(unsolved)
+      .container
+        %aside
+          %h3 Categories
+          %ul.categories
+            %li
+              %span
+                %a{:href => "/unsolveds"} Unsolved Problem
+            %li
+              %span
+                %a{:href => "/solveds"} Solved Problem
+            %li
+              %span
+                %a{:href => "#"} Search Problem
+            %li
+              %span
+                %a{:href => "#"} Rules
+            %li
+              %span
+                %a{:href => "#"} More About Us
           
-  %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Add new problem', new_unsolved_path
-  
+        %section#content
+
+          %center
+            %h1
+              %h2 
+                Listing 
+                %span{:style => "color:#FF0000;font-size:25px;"}Unsolved 
+                Problem on Problempedia
+
+            %table{:style => "border-collapse: collapse;border:1px solid;"}
+              %tr
+                %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:140px;height:70px"} Priority
+                %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:200px;height:70px"} Date
+                %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:120px;height:70px"} Topic
+                %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:130px;height:70px"} Department
+                %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:120px;height:70px"} Status
+                %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:120px;height:70px"} Detail
+                %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:120px;height:70px"} Delete
+                %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:120px;height:70px"} Edit
+              - @unsolveds.each do |unsolved|
+                %tr
+                  - if unsolved.status == 0
+                    - if unsolved.priority == 1
+                      %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
+                        %center= "LOW"
+                    - else 
+                      %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
+                        %center= "HIGH"
+                    %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
+                      %center= unsolved.created_at
+                    %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
+                      %center= unsolved.topic
+                    %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
+                      %center= unsolved.department
+                    - if unsolved.status == 0
+                      %td{:class => "table-border",:style => "font-size:17px;;height:30px;color:#FF0000"}
+                        %center= "UNSOLVED"
+                    %td
+                      %center
+                        %a{:class => "table-border",:href => "unsolveds/" + unsolved.id.to_s} Detail
+                    %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
+                      %center= link_to 'Delete', unsolved, :method => :delete, :data => { :confirm => 'Are you sure to   delete         this problem?' }
+                    %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
+                      %center= link_to 'Edit', edit_unsolved_path(unsolved)
+          
+                    
+            %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Add new problem', new_unsolved_path
+                             
+             
+     

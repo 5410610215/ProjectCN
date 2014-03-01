@@ -2,14 +2,22 @@ class SolvedsController < ApplicationController
   # GET /solveds
   # GET /solveds.json
 def index
-    
+    @unsolveds = Unsolved.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @unsolveds }
     end
   end
 
   # GET /unsolveds/1
   # GET /unsolveds/1.json
   def show
-    
+    @unsolved = Unsolved.find(params[:id])
+
+    respond_to do |format|
+      format.html #{ redirect_to solveds_path, notice: 'Unsolved problem was successfully added.' }
+      format.json { render json: @unsolved }
     end
   end
 

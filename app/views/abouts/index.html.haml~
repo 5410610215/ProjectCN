@@ -1,157 +1,295 @@
-%center
-  %table
-    %tr
-      %td
-        %p{:style => "font-size:15px;font-weight:bold;"}
-          %a{:href => "https://github.com/5410610215/Project"} Link to:Github
-      %td
-        %p{:style => "font-size:15px;font-weight:bold;"}
-          %a{:href => "https://www.pivotaltracker.com/s/projects/1012438"} Link to:Pivotaltracker
-        
-%body{:style => "background-image:url(assets/tail-middle.jpg);background-position:center;background-repeat:no-repeat;background-attachment:fixed; "}
+!!!
+%html{:lang => "en"}
+  %head
+    %title PROBLEMPEDIA | About Us
+    %meta{:charset => "utf-8"}
+    %link{:href => "assets/reset.css", :media => "all", :rel => "stylesheet", :type => "text/css"}
+      %link{:href => "assets/style.css", :media => "all", :rel => "stylesheet", :type => "text/css"}
+        %script{:src => "assets/jquery-1.4.2.min.js", :type => "text/javascript"}
+        %script{:src => "assets/cufon-yui.js", :type => "text/javascript"}
+        %script{:src => "assets/cufon-replace.js", :type => "text/javascript"}
+        %script{:src => "assets/Myriad_Pro_300.font.js", :type => "text/javascript"}
+        %script{:src => "assets/Myriad_Pro_400.font.js", :type => "text/javascript"}
+        %script{:src => "assets/script.js", :type => "text/javascript"}
+          /[if lt IE 7]
+            <link rel="stylesheet" href="assets/ie6.css" type="text/css" media="screen">
+            
+            <script type="text/javascript" src="assets/ie_png.js"></script>
+            
+            <script type="text/javascript">ie_png.fix('.png, footer, header nav ul li a, .nav-bg, .list li img');</script>
+          /[if lt IE 9] <script type="text/javascript" src="js/html5.js"></script>
+          :css
+            color:red;
+  %body#page6
+    / START PAGE SOURCE
+    .wrap
+      %header
+        .container
+          %h1
+            %a{:href => "#"} PROBLEMPEDIA
+          %nav
+            %ul
+              %li
+                %a.m1{:href => "http://localhost:3000"} Home Page
+              %li
+                %a.m2{:href => "/abouts"} PROBLEM
+              %li
+                %a.m3{:href => "/abouts"} SEARCH PROBLEM
+              %li
+                %a.m4{:href => "/abouts"} RULES
+              %li.last.current
+                %a.m5{:href => "/abouts"} ABOUT US
+          %form#search-form{:action => "#"}
+            %fieldset
+              .rowElem
+                %input{:type => "text"}
+                  %a{:href => "#"} Search
+      .container
+        %aside
+          %h3 Categories
+          %ul.categories
+            %li
+              %span
+                %a{:href => "/unsolveds"} Unsolved Problem
+            %li
+              %span
+                %a{:href => "/solveds"} Solved Problem
+            %li
+              %span
+                %a{:href => "#"} Search Problem
+            %li
+              %span
+                %a{:href => "#"} Rules
+            %li
+              %span
+                %a{:href => "/abouts"} More About Us
+            %li
+              %span
+                %a{:href => "https://github.com/5410610215/Project"} Link to:Github
+            %li
+              %span
+                %a{:href => "https://www.pivotaltracker.com/s/projects/1012438"} Link to:Pivotaltracker
+         
+        %section#content
+          #banner
+            %h2
+              PROBLEMPEDIA
+              %span
+                %span
+                  %span
+                    Delighted choice on your way        
+                    %span 
+                      Since 2014
+          .inside
+            %h2
+              About
+              %span team
+            %ul.list
+              %li.last
+                %h4 Supanut Leardkarn
+                %p
+                  5410610165
+                  %br Computer Engineering
+              %li.last
+                %h4 Parispan Pansiri
+                %p
+                  5410610215
+                  %br Computer Engineering
+              %li.last
+                %h4 Natchapon Chuikumnerd
+                %p
+                  5410612104
+                  %br Computer Engineering
+              %li.last
+                %h4 Santiphab Rungrijvithayakul
+                %p
+                  5410611775
+                  %br Computer Engineering
+              %li.last
+                %h4 Chaipat Suebsantiworapong
+                %p
+                  5410611296
+                  %br Computer Engineering
+            %h2
+              About
+              %span Website
+            .img-box
+              %img{:src => "assets/2page-img4.jpg"}
+                %span.txt1 Knowledge Management (Application on website)
+                Website จะทำการเก็บเหตุการณ์หรือความผิดพลาดต่างๆที่เกิดขึ้นภายในระบบขององค์กร เมื่อเหตุการณ์นั้นๆได้รับการปรับปรุงแก้ไขแล้ว Case บน Website นั้นจะได้รับการปิด Case แล้วมีการอธิบายรายละเอียดการแก้ไขของงานนั้นๆว่าเป็นอย่างไร เช่น เมื่อเกิดปัญหาด้าน Internet ของแผนกบัญชีภายในองค์กรหนึ่งเกิดการใช้งานไม่ได้ เมื่อมีการแจ้งเรื่องเข้ามายังแผนก IT แล้ว แผนก IT ก็จะทำการรับเรื่องเอาไว้ แล้วทำการป้อนรายละเอียดของปัญหาไว้ เมื่อมีการแก้ไขก็จะทำการส่งช่างไปซ่อมแก้ไข หลังจากนั้นก็จะมีการบันทึกรายละเอียดการแก้ไขปัญหาของงานรวมไปถึงระยะเวลาในการแก้ไขปัญหาของงานและบันทึกว่าใครเป็นผู้ทำการแก้ไขงาน ในอนาคต ถ้ามีปัญหาเกิดขึ้นในลักษณะที่ Case มีความใกล้เคียงกันก็จะมีการ Query ข้อมูลมาดูก่อนว่ามีลักษณะ Case แบบเดียวกันหรือไม่ ถ้ามีลักษณะเดียวกันก็จะมีการอ่านวิธีการแก้ไข ถ้าไม่มีลักษณะเดียวกันก็จะทำการเปิด Case ใหม่ จนมีการทำงานในลักษณะนี้ซ้ำขึ้นไปเรื่อยๆจนกลายเป็นฐานข้อมูลทางความรู้ทางข้อมูลขององค์กรนั้นๆ
 
-%center
-  %h1{:style => "color:#157DEC;font-size:100px;"} PROBLEMPEDIA
-  %table{:style => "color:#1874CD;"}
-    %tr
-      %td{:style => "font-size:25px;"} Supanut
-      %td{:style => "font-size:25px;"} Leardkarn
-      %td{:style => "font-size:25px;"} 5410610165
-    %tr
-      %td{:style => "font-size:25px;"} Parispan
-      %td{:style => "font-size:25px;"} Pansiri
-      %td{:style => "font-size:25px;"} 5410610215
-    %tr
-      %td{:style => "font-size:25px;"} Natchapon
-      %td{:style => "font-size:25px;"} Chuikumnerd
-      %td{:style => "font-size:25px;"} 5410612104
-    %tr
-      %td{:style => "font-size:25px;"} Santiphab
-      %td{:style => "font-size:25px;"} Rungrijvithayakul
-      %td{:style => "font-size:25px;"} 5410611775
-    %tr
-      %td{:style => "font-size:25px;"} Chaipat
-      %td{:style => "font-size:25px;"} Suebsantiworapong
-      %td{:style => "font-size:25px;"} 5410611296
+          .inside
+            %h2
+              About
+              %span Requirement
+            %center
+              %table
+                %tr
+                  %td{:style => "font-size:15px;"}
+                    ชื่อ
+                  %td{:style => "font-size:15px;"} :
+                    
+                  %td{:style => "font-size:15px;"}
+                    นาย ภาณุวัฒน์ สืบสันติวรพงศ์  
+                %tr
+                  %td{:style => "font-size:15px;"}
+                    อาชีพ
+                  %td{:style => "font-size:15px;"} :
+                  %td{:style => "font-size:15px;"}
+                    System Engineer, Network Engineer
+                %tr
+                  %td{:style => "font-size:15px;"}
+                    ที่อยู่
+                  %td{:style => "font-size:15px;"} :
+                  %td{:style => "font-size:15px;"}
+                    13 ราษฎร์อุทิศ 32 แขวงแสนแสบ เขตมีนบุรี กรุงเทพมหานคร 10510
+                %tr
+                  %td{:style => "font-size:15px;"}
+                    E-mail
+                  %td{:style => "font-size:15px;"} :
+                  %td{:style => "font-size:15px;"}
+                    feaezz@hotmail.com
+                %tr
+                  %td{:style => "font-size:15px;"}
+                    Tel
+                  %td{:style => "font-size:15px;"} :
+                  %td{:style => "font-size:15px;"}
+                    089-2432634
+
+            %wbr
+
+            .img-box
+              %img{:src => "assets/1page-img.jpg"}
+                ลูกค้าต้องการเว็ปไซต์ที่เก็บข้อมูลปัญหา แล้วนำให้ฝ่าย IT แก้ไขปัญหาและบันทึกวิธีการแก้ปัญหา และยังสามารถจัดลำดับความสำคัญของงานได้ เพราะว่าปัญหาบางปัญหาควรได้รับการแก้ไขทันที จึงต้องมีการจัดลำดับความสำคัญ และ พนักงานบริษัทสามารถค้นหาข้อมูลจากปัญหาที่เคยแก้ไปแล้ว เพื่อแก้ปัญหาที่เข้ามาใหม่ได้ 
+
+            %center
+              %table
+                %tr
+                  %td
+                    %center 
+                      %img{src: "assets/Form.jpg"}
+
+            %wbr
+
+          .inside
+            %h2
+              About
+              %span User Strory
+            
+            %tr
+              %th
+                %pre{:style => "color:#3366FF;font-size:15px;"}
+                  :preserve
+                    Feature 1 : Add the problem to Problempedia
+                %pre{:style => "color:BBBBBB;font-size:15px;"}
+                  :preserve
+                    As an Admin
+                    So that I can share the problem with either employees
+                    I want to add the problem to Problempedia
+
+            %wbr
+
+            %tr
+              %th
+                %pre{:style => "color:#3366FF;font-size:15px;"}
+                  :preserve
+                    Feature 2 : Add how to solve the problem to Problempedia
+                %pre{:style => "color:BBBBBB;font-size:15px;"}
+                  :preserve
+                    As an employees
+                    So that I know how to solve the problem, I can share this with other employees
+                    I want to add how to solve the problem to Problempedia
+
+            %wbr
+
+            %tr
+              %th
+                %pre{:style => "color:#3366FF;font-size:15px;"}
+                  :preserve
+                    Feature 3 : Search the problem to Problempedia
+                %pre{:style => "color:BBBBBB;font-size:15px;"}
+                  :preserve
+                    As an employees
+                    So that I can search the problem on Problempedia
+                    I want to search the problem on Problempedia database
+
+            %wbr
+
+            %tr
+              %th
+                %pre{:style => "color:#3366FF;font-size:15px;"}
+                  :preserve
+                    Feature 4 : Delete the problem to Problempedia
+                %pre{:style => "color:BBBBBB;font-size:15px;"}
+                  :preserve
+                    As an Admin
+                    So that I can delete the problem on Problempedia
+                    I want to delete the problem on Problempedia database
+
+            %wbr
+
+            %tr
+              %th
+                %pre{:style => "color:#3366FF;font-size:15px;"}
+                  :preserve
+                    Feature 5 : Delete the solve that break the rules
+                %pre{:style => "color:BBBBBB;font-size:15px;"}
+                  :preserve
+                    As an Admin
+                    So that I can delete the solve problem that break the rules
+                    I want to delete the solve problem that break the rules
+
+            %wbr
+
+            %tr
+              %th
+                %pre{:style => "color:#3366FF;font-size:15px;"}
+                  :preserve
+                    Feature 6 : Show the unsolved problem
+                %pre{:style => "color:BBBBBB;font-size:15px;"}
+                  :preserve
+                    As an everyone
+                    So that I can see the unsolved problem
+                    I want to see the unsolved problem
+
+            %wbr
+
+            %tr
+              %th
+                %pre{:style => "color:#3366FF;font-size:15px;"}
+                  :preserve
+                    Feature 7 : Show the solved problem
+                %pre{:style => "color:BBBBBB;font-size:15px;"}
+                  :preserve
+                    As an everyone
+                    So that I can see the solved problem
+                    I want to see the solved problem      
+
+            %wbr
+
+          .inside
+            %h2
+              About
+              %span ER - Diagrame
+
+            %img{src: "assets/ER.jpg", :height => "234", :width => "600"}
+
+          .inside
+            %h2
+              About
+              %span Lo - fi
+
+            %img{src: "assets/lofi.jpg", :height => "688", :width => "500"}
+
+          .inside
+            %h2
+              About
+              %span Strory Board
+
+            %img{src: "assets/story.jpg", :height => "688", :width => "500"}
 
 
-%center
-  %table
-    %tr
-      %td
-        %center 
-          %img{src: "assets/1.jpg"}
-    %tr
-      %td
-        %center 
-          %img{src: "assets/2.jpg"}
-    %tr
-      %td
-        %center 
-          %img{src: "assets/3.jpg"}
-    %tr
-      %td
-        %center 
-          %img{src: "assets/Form.jpg"}
 
-
-%center  
-  %table{:border => "0"}
-    %tr
-      %th{:style => "color:#8E35EF;font-size:25px;"}
-        %pre
-          :preserve
-            Feature 1 : Add the problem to Problempedia
-      %td{:style => "color:#FF0033;font-size:25px;"}
-        %pre
-          :preserve
-            As an Admin
-            So that I can share the problem with either employees
-            I want to add the problem to Problempedia
-    %tr
-      %th{:style => "color:#8E35EF;font-size:25px;"} 
-        %pre
-          :preserve
-            Feature 2 : Add how to solve the problem to Problempedia
-      %td{:style => "color:#FF0033;font-size:25px;"}
-        %pre
-          :preserve
-            As an employees
-            So that I know how to solve the problem, I can share this with other employees
-            I want to add how to solve the problem to Problempedia
-    %tr
-      %th{:style => "color:#8E35EF;font-size:25px;"} 
-        %pre
-          :preserve
-            Feature 3 : Search the problem to Problempedia
-      %td{:style => "color:#FF0033;font-size:25px;"}
-        %pre
-          :preserve
-            As an employees
-            So that I can search the problem on Problempedia
-            I want to search the problem on Problempedia database
-    %tr
-      %th{:style => "color:#8E35EF;font-size:25px;"} 
-        %pre
-          :preserve
-            Feature 4 : Delete the problem to Problempedia
-      %td{:style => "color:#FF0033;font-size:25px;"}
-        %pre
-          :preserve
-            As an Admin
-            So that I can delete the problem on Problempedia
-            I want to delete the problem on Problempedia database
-    %tr
-      %th{:style => "color:#8E35EF;font-size:25px;"} 
-        %pre
-          :preserve
-            Feature 5 : Delete the solve that break the rules
-      %td{:style => "color:#FF0033;font-size:25px;"}
-        %pre
-          :preserve
-            As an Admin
-            So that I can delete the solve problem that break the rules
-            I want to delete the solve problem that break the rules
-    %tr
-      %th{:style => "color:#8E35EF;font-size:25px;"} 
-        %pre
-          :preserve
-            Feature 6 : Show the unsolved problem
-      %td{:style => "color:#FF0033;font-size:25px;"}
-        %pre
-          :preserve
-            As an everyone
-            So that I can see the unsolved problem
-            I want to see the unsolved problem
-    %tr
-      %th{:style => "color:#8E35EF;font-size:25px;"} 
-        %pre
-          :preserve
-            Feature 7 : Show the solved problem
-      %td{:style => "color:#FF0033;font-size:25px;"}
-        %pre
-          :preserve
-            As an everyone
-            So that I can see the solved problem
-            I want to see the solved problem  
-
-%center
-  %table
-    %tr
-      %td
-        %center 
-          %img{src: "assets/ER.jpg"}
-    %tr
-      %td 
-        %center
-          %img{src: "assets/story.jpg"}
-    %tr
-      %td
-        %center 
-          %img{src: "assets/lofi.jpg"}
-
-       
-       
-        
+ 
 
 

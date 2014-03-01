@@ -16,7 +16,7 @@ def index
     @unsolved = Unsolved.find(params[:id])
 
     respond_to do |format|
-      format.html #{ redirect_to solveds_path, notice: 'Unsolved problem was successfully added.' }
+      format.html { redirect_to solveds_path, notice: 'Unsolved problem was successfully added.' }
       format.json { render json: @unsolved }
     end
   end
@@ -24,17 +24,28 @@ def index
   # GET /unsolveds/new
   # GET /unsolveds/new.json
   def new
-    
+    @unsolved = Unsolved.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @unsolved }
+    end
   end
 
  def edit
-    
+    @unsolved = Unsolved.find(params[:id])
   end
 
   # POST /unsolveds
   # POST /unsolveds.json
   def create
-    
+    @unsolved = Unsolved.new(unsolved_params)
+    respond_to do |format|
+      if @unsolved.save
+        format.html { redirect_to @unsolved, notice: 'Unsolved problem was successfully added.' }
+        format.json { render json: @unsolved, status: :created, location: @unsolved }
+      end
+    end
   end
 
   # PATCH/PUT /unsolveds/1
@@ -44,7 +55,14 @@ def index
   # DELETE /unsolveds/1.json
   
   def update
-   
+    @unsolved = Unsolved.find(params[:id])
+
+    respond_to do |format|
+      if @unsolved.update_attributes(params[:unsolved])
+        format.html { redirect_to @unsolved, notice: 'Unsolved was successfully updated.' }
+        format.json { head :no_content }
+      end
+    end
   end
 
   # DELETE /unsolveds/1
@@ -58,6 +76,6 @@ def index
     # params.require(:person).permit(:name, :age)
     # Also, you can specialize this method with per-user checking of permissible attributes.
     def unsolved_params
-     
+      params.require(:unsolved).permit(:department, :details, :priority, :status, :topic)
     end
 end

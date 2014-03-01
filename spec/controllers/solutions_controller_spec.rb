@@ -23,7 +23,7 @@ describe SolutionsController do
   # This should return the minimal set of attributes required to create a valid
   # Solution. As you add validations to Solution, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "topic_id" => "1" } }
+  let(:valid_attributes) { { "topic_id" => "1" , "worked" => "1" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -45,39 +45,51 @@ describe SolutionsController do
       assigns(:solution).should eq(solution)
     end
   end
-
-  describe "GET new" do
-    it "assigns a new solution as @solution" do
-      get :new, {}, valid_session
-      assigns(:solution).should be_a_new(Solution)
-    end
+  
+  def mock_unsolved(stubs={})
+    @mock_unsolved ||= mock_model(Unsolved, stubs).as_null_object
   end
 
-  describe "GET edit" do
-    it "assigns the requested solution as @solution" do
-      solution = Solution.create! valid_attributes
-      get :edit, {:id => solution.to_param}, valid_session
-      assigns(:solution).should eq(solution)
+  describe "GET new solution" do
+    it "assigns a new unsolved as @solution" do
+      Unsolved.stub(:find).with("37") { mock_unsolved }
+      get :new_solution, :id => "37"
+      assigns(:problem_id).should be(mock_unsolved)
     end
   end
 
   describe "POST create" do
     describe "with valid params" do
       it "creates a new Solution" do
-        expect {
-          post :create, {:solution => valid_attributes}, valid_session
+	expect {
+	  @attr = { :id => "1" }
+          post :create, {:solution => @attr}, valid_session
         }.to change(Solution, :count).by(1)
       end
 
       it "assigns a newly created solution as @solution" do
-        post :create, {:solution => valid_attributes}, valid_session
+	@attr = { :id => "1" }
+        post :create, {:solution => @attr}, valid_session
         assigns(:solution).should be_a(Solution)
         assigns(:solution).should be_persisted
       end
 
       it "redirects to the created solution" do
+	@attr = { :id => "1" }
+        post :create, {:solution => @attr}, valid_session
+        response.should redirect_to(Solution.last)
+      end
+
+      it "redirects to the created solution" do
         post :create, {:solution => valid_attributes}, valid_session
         response.should redirect_to(Solution.last)
+      end
+
+      it "should redirect to the solution show page and show success message" do
+	@attr = { :id => "1" }
+        post :create, :solution => @attr
+        flash[:notice].should =~ /solution was successfully created/i
+        response.should redirect_to solution_path(assigns(:solution))
       end
     end
 
@@ -94,50 +106,6 @@ describe SolutionsController do
         Solution.any_instance.stub(:save).and_return(false)
         post :create, {:solution => { "topic_id" => "invalid value" }}, valid_session
         response.should render_template("new")
-      end
-    end
-  end
-
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested solution" do
-        solution = Solution.create! valid_attributes
-        # Assuming there are no other solutions in the database, this
-        # specifies that the Solution created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Solution.any_instance.should_receive(:update_attributes).with({ "topic_id" => "1" })
-        put :update, {:id => solution.to_param, :solution => { "topic_id" => "1" }}, valid_session
-      end
-
-      it "assigns the requested solution as @solution" do
-        solution = Solution.create! valid_attributes
-        put :update, {:id => solution.to_param, :solution => valid_attributes}, valid_session
-        assigns(:solution).should eq(solution)
-      end
-
-      it "redirects to the solution" do
-        solution = Solution.create! valid_attributes
-        put :update, {:id => solution.to_param, :solution => valid_attributes}, valid_session
-        response.should redirect_to(solution)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns the solution as @solution" do
-        solution = Solution.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Solution.any_instance.stub(:save).and_return(false)
-        put :update, {:id => solution.to_param, :solution => { "topic_id" => "invalid value" }}, valid_session
-        assigns(:solution).should eq(solution)
-      end
-
-      it "re-renders the 'edit' template" do
-        solution = Solution.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Solution.any_instance.stub(:save).and_return(false)
-        put :update, {:id => solution.to_param, :solution => { "topic_id" => "invalid value" }}, valid_session
-        response.should render_template("edit")
       end
     end
   end
