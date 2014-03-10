@@ -1,25 +1,27 @@
 %h1 Listing solutions
-
-%table
-  %tr
-    %th Topic
-    %th Solution
-    %th User
-    %th Worked
-    %th
-    %th
-    %th
-
-  - @solutions.each do |solution|
+-if session[:role] >= 1
+  %table
     %tr
-      %td= solution.topic_id
-      %td= solution.solution
-      %td= solution.user
-      %td= solution.worked
-      %td= link_to 'Show', solution
-      %td= link_to 'Edit', edit_solution_path(solution)
-      %td= link_to 'Destroy', solution, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Topic
+      %th Solution
+      %th User
+      %th Worked
+      %th
+      %th
+      %th
+    - @solutions.each do |solution|
+      %tr
+        %td= solution.topic_id
+        %td= solution.solution
+        %td= solution.user
+        %td= solution.worked
+        %td= link_to 'Show', solution
+        %td= link_to 'Edit', edit_solution_path(solution)
+        %td= link_to 'Destroy', solution, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
+  %br
 
-= link_to 'New Solution', new_solution_path
+  = link_to 'New Solution', new_solution_path
+-else
+  %div Please Login before use this session
+  %a{:href => "/"} Click Here to login

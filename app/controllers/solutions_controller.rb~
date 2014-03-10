@@ -1,14 +1,7 @@
 class SolutionsController < ApplicationController
   # GET /solutions
   # GET /solutions.json
-  def index
-    @solutions = Solution.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @solutions }
-    end
-  end
+ 
 
   # GET /solutions/1
   # GET /solutions/1.json
@@ -33,17 +26,12 @@ class SolutionsController < ApplicationController
   end
 
   def new
-    @solution = Solution.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @solution }
-    end
+   
   end
 
   # GET /solutions/1/edit
   def edit
-    @solution = Solution.find(params[:id])
+  
   end
 
   # POST /solutions
@@ -51,7 +39,7 @@ class SolutionsController < ApplicationController
   def create
     @solution = Solution.new(solution_params)
 
-    if @solution.worked = 1
+    if @solution.worked == 1
       @problem = Unsolved.find(@solution.topic_id)
       @problem.update_attribute('status',1)
     end
@@ -69,27 +57,28 @@ class SolutionsController < ApplicationController
   # PATCH/PUT /solutions/1
   # PATCH/PUT /solutions/1.json
   def update
-    @solution = Solution.find(params[:id])
-
-    respond_to do |format|
-      if @solution.update_attributes(solution_params)
-        format.html { redirect_to @solution, notice: 'Solution was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @solution.errors, status: :unprocessable_entity }
-      end
-    end
+   
   end
 
   # DELETE /solutions/1
   # DELETE /solutions/1.json
   def destroy
     @solution = Solution.find(params[:id])
+    @solution_topic = Solution.find(params[:id]).topic_id
     @solution.destroy
 
     respond_to do |format|
-      format.html { redirect_to solutions_url }
+      format.html { redirect_to unsolved_path(@solution_topic) }
+      format.json { head :no_content }
+    end
+  end
+  def destroy_solved
+    @solution = Solution.find(params[:id])
+    @solution_topic = Solution.find(params[:id]).topic_id
+    @solution.destroy
+
+    respond_to do |format|
+      format.html { redirect_to solved_path(@solution_topic) }
       format.json { head :no_content }
     end
   end

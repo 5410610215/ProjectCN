@@ -1,8 +1,12 @@
-%body{:style => "background-color:#EEEEEE;"}
-%center
-  %p{:style => "color:#157DEC;font-size:40px;font-family:Arial,Helvetica,sans-serif;"}  Add new Problem to Problempedia
-  %hr
+-if session[:role] >= 1
+  %body{:style => "background-color:#EEEEEE;"}
+  %center
+    %p{:style => "color:#157DEC;font-size:40px;font-family:Arial,Helvetica,sans-serif;"}  Add new Problem to Problempedia
+    %hr
 
-  = render 'form'
+    = render 'form'
 
-  %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Back to Listing Unsolved Problem', unsolveds_path
+    %p{:style => "font-size:15px;font-weight:bold;"}= link_to 'Back to Listing Unsolved Problem', unsolveds_path
+-else
+  %div Please Login before use this session
+  %a{:href => "/"} Click Here to login    

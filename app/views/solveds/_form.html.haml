@@ -7,16 +7,20 @@
           %li= msg
   %table{:border => "0"}
     %tr.field
-      %td= f.label :priority
+      %td= f.label :'priority' 
+      %td{:style => "color:#FF0000;font-size:20px"}= f.label :'*' 
       %td= f.select 'priority', [['Low', 1], ['High', 2]]
     %tr.field
       %td= f.label :topic
+      %td{:style => "color:#FF0000;font-size:20px"}= f.label :'*' 
       %td= f.text_field :topic
     %tr.field
       %td= f.label :department
+      %td{:style => "color:#FF0000;font-size:20px"}= f.label :'*' 
       %td= f.text_field :department
     %tr.field
       %td= f.label :details
+      %td{:style => "color:#FF0000;font-size:20px"}= f.label :'*' 
       %td= f.text_area :details
     %tr.field
       %td= f.number_field :status, :value => 0, :style => "display:none"

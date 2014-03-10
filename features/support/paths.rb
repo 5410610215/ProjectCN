@@ -17,7 +17,8 @@ module NavigationHelpers
       unsolved_path(Unsolved.find_by_topic($1))
    when /^solveds page$/
       solveds_path
-
+   when /^problempedia page$/
+      root_path
 
 
     when /^the RottenPotatoes home\s?page$/

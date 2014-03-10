@@ -2,13 +2,20 @@ class SolvedsController < ApplicationController
   # GET /solveds
   # GET /solveds.json
 def index
-    @unsolveds = Unsolved.all
-
+    # session[:role] = 1
+    @search = params[:search_value]
+    if @search != nil
+      @unsolveds = Unsolved.where("topic like ?","%#{@search}%")
+    else
+      @unsolveds = Unsolved.order('updated_at desc')  
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @unsolveds }
     end
   end
+
 
   # GET /unsolveds/1
   # GET /unsolveds/1.json

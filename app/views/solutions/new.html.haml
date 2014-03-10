@@ -1,5 +1,9 @@
-%h1 New solution
+-if session[:role] >= 1
+  %h1 New solution
 
-= render 'form'
+  = render 'form'
 
-= link_to 'Back', solutions_path
+  = link_to 'Back', solutions_path
+-else
+  %div Please Login before use this session
+  %a{:href => "/"} Click Here to login

@@ -1,15 +1,27 @@
 %div
-  = @problem_id.id
-%div
+  = "Topic : "
   = @problem_id.topic
 %div
-  = @problem_id.priority
+  = "priority : "
+  -if @problem_id.priority == 1
+    = "Low"
+  -if @problem_id.priority == 2
+    = "High"
 %div
+  = "Details : "
   = @problem_id.details
 %div
+  = "Department : "
   = @problem_id.department
 %div
-  = @problem_id.status
+  = "status : "
+  -if @problem_id.status == 0
+    = "Unsolved"
+  -if @problem_id.status == 1
+    = "Solved"
+%div
+  = "User : "
+  = session[:user].username
 = form_for @solution do |f|
   - if @solution.errors.any?
     #error_explanation
@@ -19,14 +31,12 @@
           %li= msg
 
   .field
-    = f.label :topic_id
-    = f.number_field :topic_id, :value => @problem_id.id, :readonly => true
+    = f.number_field :topic_id, :value => @problem_id.id, :readonly => true, :style => "display:none"
   .field
     = f.label :solution
     = f.text_area :solution
   .field
-    = f.label :user
-    = f.text_field :user
+    = f.text_field :user, :value => session[:user].username, :readonly => true, :style => "display:none"
   .field
     = f.label 'Finish ?'
     = f.select 'worked' , [['Just Recommend', 0], ['Finished Job', 1]]

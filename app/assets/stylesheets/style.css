@@ -507,6 +507,7 @@ footer .footerlink {
 .footerlink a {
 	color:#454545;
 	font-weight:normal;
+
 	margin:0;
 	padding:0;
 	border:none;
@@ -526,4 +527,62 @@ footer .footerlink {
 }
 a {
 	outline:none;
+}
+#error > #notice{
+	color:red;
+}
+.delete-button a{
+	display:block;
+	padding:8px;
+	border: 1px solid;
+	background: white;
+	color: red;
+	margin-right: 10px
+}
+.delete-button a:hover{
+	background: red;
+	color:white;
+}
+a.add-button , .add-button a {
+	display: block;
+	border: 1px solid;
+	width: 300px;
+	border-radius: 15px;
+	padding: 5px;
+	color: darkGreen;
+	background: #00FF37;
+	border:none;
+}
+a.add-button:hover , .add-button a:hover{
+	background: darkGreen;
+	color: #00FF37;
+}
+
+.delete-problem {
+	padding: 7px;
+	border: 1px solid;
+	border-radius: 5px;
+	background: red;
+	color: white;
+	
+}
+
+.delete-problem:hover{
+	background: white;
+	color: red;
+}
+.round-border{
+	border-radius:5px;
+}
+.back-problem a {
+	background: grey;
+	color: black;
+	padding: 9px;
+	display: block;
+	border-radius: 5px;
+}
+
+.back-problem a:hover {
+	background: black;
+	color:grey;
 }

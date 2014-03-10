@@ -1,0 +1,2 @@
+%h2 Invalid username or password please try again
+%a{:href => "/" } Click Here

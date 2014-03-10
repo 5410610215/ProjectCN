@@ -4,6 +4,10 @@ Feature: Add the problem to Problempedia
   So that I can share the problem with either employees
 
 Background: problem have been added to database
+
+Given the following users exist:
+| username | password |
+| admin    | admin    |
   
 Given the following unsolveds exist:
 | topic    | priority | department | status |               details                |
@@ -13,9 +17,14 @@ Given the following unsolveds exist:
  
 
 
-And I am on unsolveds page
+And I am on problempedia page
 
 Scenario: Add a new problem
+
+And I fill in "username" with "admin"
+And I fill in "password" with "admin"
+And I press "Login"
+When I go to unsolveds page
 When I go to Add problem page
 And I fill in "Topic" with "Blue screen"
 And I fill in "Department" with "Accounting"

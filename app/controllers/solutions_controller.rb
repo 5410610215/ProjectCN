@@ -2,12 +2,7 @@ class SolutionsController < ApplicationController
   # GET /solutions
   # GET /solutions.json
   def index
-    @solutions = Solution.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @solutions }
-    end
+    
   end
 
   # GET /solutions/1
@@ -71,10 +66,21 @@ class SolutionsController < ApplicationController
   # DELETE /solutions/1.json
   def destroy
     @solution = Solution.find(params[:id])
+    @solution_topic = Solution.find(params[:id]).topic_id
     @solution.destroy
 
     respond_to do |format|
-      format.html { redirect_to solutions_url }
+      format.html { redirect_to unsolved_path(@solution_topic) }
+      format.json { head :no_content }
+    end
+  end
+  def destroy_solved
+    @solution = Solution.find(params[:id])
+    @solution_topic = Solution.find(params[:id]).topic_id
+    @solution.destroy
+
+    respond_to do |format|
+      format.html { redirect_to solved_path(@solution_topic) }
       format.json { head :no_content }
     end
   end

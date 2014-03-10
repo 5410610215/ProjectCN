@@ -2,8 +2,14 @@ class UnsolvedsController < ApplicationController
   # GET /unsolveds
   # GET /unsolveds.json
   def index
-    @unsolveds = Unsolved.order('priority desc')
-
+    # session[:role] = 1
+    @search = params[:search_value]
+    if @search != nil
+      @unsolveds = Unsolved.where("topic like ?","%#{@search}%")
+    else
+      @unsolveds = Unsolved.order('priority desc')  
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @unsolveds }
@@ -14,10 +20,15 @@ class UnsolvedsController < ApplicationController
   # GET /unsolveds/1.json
   def show
     @unsolved = Unsolved.find(params[:id])
-
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @unsolved }
+       if(session[:role] >= 1)
+        format.html # show.html.erb
+        format.json { render json: @unsolved }
+       else
+        format.html { redirect_to root_path }
+        format.json { head :no_content }
+      end
+      
     end
   end
 
@@ -40,11 +51,23 @@ class UnsolvedsController < ApplicationController
   # POST /unsolveds.json
   def create
     @unsolved = Unsolved.new(unsolved_params)
+    @topic = @unsolved.topic
+    @department = @unsolved.department
+    @details = @unsolved.details
+   
     respond_to do |format|
-      if @unsolved.save
-        format.html { redirect_to @unsolved, notice: 'Unsolved problem was successfully added.' }
-        format.json { render json: @unsolved, status: :created, location: @unsolved }
+      if @topic == '' || @department == '' || @details == ''
+        format.html { redirect_to '/unsolveds/new', notice: 'Please fill in all the fields that required.' }
+        format.json { render json: @topic }
+      else
+         if @unsolved.save
+          format.html { redirect_to @unsolved, notice: 'Unsolved problem was successfully added.' }
+          format.json { render json: @unsolved, status: :created, location: @unsolved }
+        end
       end
+      
+      
+     
     end
   end
 

@@ -1,6 +1,10 @@
 Feature: Edit the unsolved problem on Problempedia
   
-Background: problem have been added to database
+Background: change a unsolveds problem from database
+
+Given the following users exist:
+| username | password |
+| admin    | admin    |
   
 Given the following unsolveds exist:
 | topic    | priority | department | status |               details                |
@@ -9,9 +13,13 @@ Given the following unsolveds exist:
 | Printer  |    5     |  Manager    |   0    | Printer says ink cartridge is empty |
  
 
-
+And I am on problempedia page
 
 Scenario: Edit a unsolveds problem
+
+And I fill in "username" with "admin"
+And I fill in "password" with "admin"
+And I press "Login"
 When I go to the edit page for "LAN"
 And I fill in "Department" with "Engineer2"
 And I press "Save"

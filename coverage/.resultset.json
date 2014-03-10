@@ -2,11 +2,11 @@
   "Cucumber Features": {
     "coverage": {
     },
-    "timestamp": 1393660902
+    "timestamp": 1394463802
   },
   "RSpec": {
     "coverage": {
-      "/home/saasbook/Project/app/controllers/abouts_controller.rb": [
+      "/home/saasbook/ProjectCN320/app/controllers/abouts_controller.rb": [
         1,
         null,
         null,
@@ -59,53 +59,58 @@
         null,
         null
       ],
-      "/home/saasbook/Project/app/controllers/application_controller.rb": [
+      "/home/saasbook/ProjectCN320/app/controllers/application_controller.rb": [
         null,
         null,
         1,
         1,
         null
       ],
-      "/home/saasbook/Project/app/helpers/application_helper.rb": [
+      "/home/saasbook/ProjectCN320/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Project/app/helpers/abouts_helper.rb": [
+      "/home/saasbook/ProjectCN320/app/helpers/abouts_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Project/app/helpers/problempedia_helper.rb": [
+      "/home/saasbook/ProjectCN320/app/helpers/problempedia_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Project/app/helpers/solutions_helper.rb": [
+      "/home/saasbook/ProjectCN320/app/helpers/solutions_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Project/app/helpers/solveds_helper.rb": [
+      "/home/saasbook/ProjectCN320/app/helpers/solveds_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Project/app/helpers/unsolveds_helper.rb": [
+      "/home/saasbook/ProjectCN320/app/helpers/unsolveds_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Project/app/helpers/welcome_helper.rb": [
+      "/home/saasbook/ProjectCN320/app/helpers/users_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Project/app/models/about.rb": [
+      "/home/saasbook/ProjectCN320/app/helpers/welcome_helper.rb": [
+        1,
+        null
+      ],
+      "/home/saasbook/ProjectCN320/app/models/about.rb": [
         1,
         null,
         null
       ],
-      "/home/saasbook/Project/app/controllers/problempedia_controller.rb": [
+      "/home/saasbook/ProjectCN320/app/controllers/problempedia_controller.rb": [
         1,
         1,
         null,
+        null,
         null
       ],
-      "/home/saasbook/Project/app/controllers/solutions_controller.rb": [
+      "/home/saasbook/ProjectCN320/app/controllers/solutions_controller.rb": [
         1,
         null,
         null,
@@ -197,12 +202,12 @@
         null,
         null
       ],
-      "/home/saasbook/Project/app/models/solution.rb": [
+      "/home/saasbook/ProjectCN320/app/models/solution.rb": [
         1,
         1,
         null
       ],
-      "/home/saasbook/Project/app/controllers/solveds_controller.rb": [
+      "/home/saasbook/ProjectCN320/app/controllers/solveds_controller.rb": [
         1,
         null,
         null,
@@ -267,32 +272,37 @@
         null,
         null
       ],
-      "/home/saasbook/Project/app/models/solved.rb": [
+      "/home/saasbook/ProjectCN320/app/models/solved.rb": [
         1,
         null,
         null
       ],
-      "/home/saasbook/Project/app/controllers/unsolveds_controller.rb": [
+      "/home/saasbook/ProjectCN320/app/controllers/unsolveds_controller.rb": [
         1,
         null,
         null,
-        1,
-        1,
-        null,
-        1,
-        1,
-        1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
         1,
         null,
         1,
         1,
         1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null,
         null,
         null,
         null,
@@ -369,12 +379,143 @@
         null,
         null
       ],
-      "/home/saasbook/Project/app/models/unsolved.rb": [
+      "/home/saasbook/ProjectCN320/app/models/unsolved.rb": [
         1,
         1,
         null
       ],
-      "/home/saasbook/Project/app/models/comment.rb": [
+      "/home/saasbook/ProjectCN320/app/controllers/users_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null,
+        1,
+        4,
+        null,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        4,
+        null,
+        null
+      ],
+      "/home/saasbook/ProjectCN320/app/models/user.rb": [
+        1,
+        1,
+        null
+      ],
+      "/home/saasbook/ProjectCN320/app/models/comment.rb": [
         null,
         null,
         1,
@@ -383,6 +524,6 @@
         null
       ]
     },
-    "timestamp": 1393660911
+    "timestamp": 1393680392
   }
 }

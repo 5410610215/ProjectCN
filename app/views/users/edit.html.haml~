@@ -1,0 +1,10 @@
+%h1 Editing user
+-if session[:role] == 2
+  = render 'form'
+
+  = link_to 'Show', @user
+  \|
+  = link_to 'Back', users_path
+-else
+  %div Neet to be admin
+  %a{:href => "/"} Click Here to login

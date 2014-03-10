@@ -3,7 +3,11 @@ Feature: Delete the unsolved problem on Problempedia
   So that I can delete the problem on Problempedia
   I want to delete the problem on Problempedia database
 
-Background: problem have been added to database
+Background: delete a unsolveds problem from database
+
+Given the following users exist:
+| username | password |
+| admin    | admin    |
   
 Given the following unsolveds exist:
 | topic    | priority | department | status |               details                |
@@ -13,12 +17,16 @@ Given the following unsolveds exist:
  
 
 
-And I am on unsolveds page
+And I am on problempedia page
 
 Scenario: Delete a unsolveds problem
+
+And I fill in "username" with "admin"
+And I fill in "password" with "admin"
+And I press "Login"
+When I go to unsolveds page
 When I go to the show page for "LAN"
 And I follow "Delete"
 Then I should be on unsolveds page
 And I should not see "LAN"
-
 

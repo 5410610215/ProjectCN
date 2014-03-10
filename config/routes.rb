@@ -1,5 +1,11 @@
 
 Blog::Application.routes.draw do
+  resources :rules
+
+
+  resources :users
+
+
   resources :solutions
 
 
@@ -14,8 +20,12 @@ Blog::Application.routes.draw do
 
   get "problempedia/index"
   get "solveds/delete/:id", to: "unsolveds#destroy_solved"
+  get "solution/delete/:id", to: "solutions#destroy_solved"
   get "new_solution/:id", to: "solutions#new_solution"
   get "unsolveds/new_solution/:id", to: "solutions#new_solution"
+  get "user", to: "users#login"
+  post "check_user", to: "users#check_user"
+  get "logout", to: "users#logout"
 
  resources :posts do
   resources :comments

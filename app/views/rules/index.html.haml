@@ -1,0 +1,159 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %title PROBLEMPEDIA | About Us
+    %meta{:charset => "utf-8"}
+    %link{:href => "assets/reset.css", :media => "all", :rel => "stylesheet", :type => "text/css"}
+      %link{:href => "assets/style.css", :media => "all", :rel => "stylesheet", :type => "text/css"}
+        %script{:src => "assets/jquery-1.4.2.min.js", :type => "text/javascript"}
+        %script{:src => "assets/cufon-yui.js", :type => "text/javascript"}
+        %script{:src => "assets/cufon-replace.js", :type => "text/javascript"}
+        %script{:src => "assets/Myriad_Pro_300.font.js", :type => "text/javascript"}
+        %script{:src => "assets/Myriad_Pro_400.font.js", :type => "text/javascript"}
+        %script{:src => "assets/script.js", :type => "text/javascript"}
+          /[if lt IE 7]
+            <link rel="stylesheet" href="assets/ie6.css" type="text/css" media="screen">
+            
+            <script type="text/javascript" src="assets/ie_png.js"></script>
+            
+            <script type="text/javascript">ie_png.fix('.png, footer, header nav ul li a, .nav-bg, .list li img');</script>
+          /[if lt IE 9] <script type="text/javascript" src="js/html5.js"></script>
+          :css
+            color:red;
+  %body#page6
+    / START PAGE SOURCE
+    .wrap
+      %header
+        .container
+          %h1
+            %a{:href => "/"} PROBLEMPEDIA
+          %nav
+            %ul
+              %li
+                %a.m1{:href => "/"} Home Page
+              %li
+                %a.m2{:href => "/unsolveds"} UNSOLVED PROBLEM
+              %li
+                %a.m3{:href => "/solveds"} SOLVED PROBLEM
+              %li.current
+                %a.m4{:href => "/rules"} RULES
+              %li.last
+                %a.m5{:href => "/abouts"} ABOUT US
+
+            %form#search-form{:action => "#"}
+              %fieldset
+                .rowElem
+                  - if session[:role] >= 1
+                    - @user = session[:user]
+                    %table{:border => "0"}
+                      %tr
+                        %td{:style => "text-align:right;"}
+                          %h4 Welcome #{@user.username}
+                      %tr
+                        %td{:style => "text-align:right;"}
+                          %a{:href => "logout" } Logout
+
+      .container
+        %aside
+          %h3 Categories
+          %ul.categories
+            %li
+              %span
+                %a{:href => "/unsolveds"} Unsolved Problem
+            %li
+              %span
+                %a{:href => "/solveds"} Solved Problem
+            %li
+              %span
+                %a{:href => "/rules"} Rules
+            %li
+              %span
+                %a{:href => "/abouts"} More About Us
+
+         
+        %section#content
+          .inside
+            %h2
+              About
+              %span rules
+            .img-box
+              %span.txt1 กรุณาอ่าน กฎ และเงื่อนไขในการใช้งาน Webboard โดยละเอียด
+              %table
+                %tr
+                  %td
+                    1. ห้ามเผยแพร่ข้อความเนื้อหาที่ทำให้สถาบันชาติ ศาสนา พระมหากษัตริย์และพระบรมวงศานุวงศ์เสื่อมเสีย ไม่ว่าจะเป็นทางข้อความ หรือทางภาพ
+                %tr
+                  %td
+                    2. ห้ามเผยแพร่ข้อความและเนื้อหาที่เป็นการโฆษณาชวนเชื่อและหลอกลวง ไม่ว่าจะเป็นทางข้อความ หรือทางภาพ หากฝ่าฝืนจะผิดกฎหมายในข้อหาโฆษณาหลอกลวงประชาชน
+                %tr
+                  %td
+                    3. ห้ามเผยแพร่ข้อความและเนื้อหาที่ทำให้ผู้อื่นนั้นเสียหาย รำคาญใจ หรือก่อเกิดความรู้สึกไม่ดีต่อผู้อื่น ไม่ว่าจะเกิดด้วยความตั้งใจหรือไม่
+                %tr
+                  %td
+                    4. ห้ามเผยแพร่ข้อความที่ส่อเสียดหรือว่ากล่าวให้ร้ายแก่สมาชิกผู้อื่น ไม่ว่าข้อความนั้นจะมีว่าอย่างไร จะกล่าวถึงชื่อผู้อื่นหรือไม่
+                %tr
+                  %td
+                    5. ห้ามเผยแพร่ข้อความที่ยุยงให้ผู้อื่นเกิดความขัดแย้งซึ่งกันและกัน ไม่ว่าผู้ตั้งกระทู้หรือผู้ตอบนั้นจะตั้งใจหรือไม่
+                %tr
+                  %td
+                    6. ห้ามเผยแพร่ข้อความ รูปภาพ ที่ส่อไปในเรื่องเพศ ลามกอนาจาร หรือขัดต่อศีลธรรมอันดีของไทย
+                %tr
+                  %td
+                    7. ห้ามเผยแพร่ข้อความที่ไม่ก่อให้เกิดประโยชน์แก่ผู้อื่น หรือข้อความที่ซ้ำๆ ในกระทู้เดียวกันหรือหลายกระทู้ ทั้งนี้ขึ้นอยู่กับความเหมาะสม เจตนาของผู้ตั้งกระทู้หรือผู้ตอบ และสถานการณ์ในกระทู้นั้น
+                %tr
+                  %td
+                    8. ห้ามเผยแพร่ข้อความหรือกระทู้ที่ส่อให้เห็นถึงเจตนาในการพนันต่างๆ ไม่ว่าจะวิธีใดก็ตาม
+                %tr
+                  %td
+                    9. ห้ามเผยแพร่ข้อมูลส่วนตัวของตนเองและของผู้อื่น ซึ่งสามารถสร้างความเสียหายให้กับบุคคลผู้เป็นเจ้าของหรือบุคคลที่สาม เช่นหมายเลขโทรศัพท์ หมายเลขบัตรเครดิต ฯลฯ ไม่ว่าผู้เผยแพร่จะมีเจตนาหรือไม่
+                %tr
+                  %td
+                    10. ขอสงวนสิทธิ์ไม่ให้บริการ Username บางคำที่เป็นของผู้ดูแลระบบ ได้แก่ "webmaster", "web editor", "hostmaster", "postmaster", "admin", "member(s)", "customer / customer service" หรือคำอื่นๆ ที่พิจารณาว่าไม่เหมาะสมสำหรับการใช้เป็น Username
+                %tr
+                  %td
+                    11. สมาชิกจะต้องใช้นามแฝงที่เหมาะสม ไม่หยาบคาย หรือส่อไปในทางลามกอนาจาร มิฉะนั้นทีมงานมีสิทธิ์ ไม่ให้สิทธิ์การเป็นสมาชิกได้
+                %tr
+                  %td
+                    12. ทีมงานขอสงวนสิทธิ์ในการยกเลิกความเป็นสมาชิกได้ โดยไม่ต้องบอกกล่าวให้ทราบล่วงหน้า
+                %tr
+                  %td
+                    13. ทีมงานขอสงวนสิทธิ์ในการหยุดให้บริการ เมื่อใดก็ได้ โดยไม่ต้องแจ้งให้สมาชิกทราบล่วงหน้า
+                %tr
+                  %td
+                    14. ทีมงานขอสงวนสิทธิ์ในการลบกระทู้ และความคิดเห็นใน Webboard โดยมิต้องแจ้งให้ทราบล่วงหน้า
+
+          .inside
+            .img-box
+              %span.txt1 ข้อความ และรูปภาพ ที่ถูกพิมพ์และเผยแพร่ออกจากเว็บบอร์ดแห่งนี้ เกิดขึ้นจากการเขียนโดยสาธารณชน และตีพิมพ์แบบอัตโนมัติ ซึ่งทางเว็บไซต์ และทีมงาน ไม่จำเป็นต้องเห็นด้วย และ "ไม่รับผิดชอบ" ต่อข้อความ และรูปภาพใดๆ ผู้อ่านจึงต้องใช้วิจารณญาณในการกลั่นกรองด้วยตนเอง อย่างไรก็ตาม หากท่านพบข้อความ หรือรูปภาพที่ไม่เหมาะสม ได้ถูกเผยแพร่ลงในเว็บไซต์ อาทิเช่น คำพูดที่ลบหลู่ ดูหมิ่นต่อความมั่นคงของชาติ ศาสนา และพระมหากษัตริย์ สิ่งผิดกฎหมาย หรือขัดต่อศีลธรรมต่างๆ กรุณาแจ้งมาที่ webmaster ของแต่ละเว็บไซต์ เพื่อทีมงานจะได้ดำเนินการโดยเร็วที่สุด
+
+
+          .inside
+            .img-box
+              %span.txt1 คำแนะนำในการตั้งชื่อห้ามใช้ชื่อไม่เหมาะสมดังต่อไปนี้
+              %table
+                %tr
+                  %td
+                    %span{:style => "color:#FF0000"} 1. มีความหมายไม่เหมาะสม หยาบคาย เป็นคำผวน หรือส่อไปในทาง ลามกอนาจาร
+                %tr
+                  %td
+                    %span{:style => "color:#FF0000"} 2. กล่าวพาดพิง หรือล้อเลียน ถึงสถาบัน ยี่ห้อสินค้า บุคคลอื่น
+                %tr
+                  %td
+                    %span{:style => "color:#FF0000"} 3. มีข้อมูลส่วนตัว เช่น ชื่อ-นามสกุล อีเมล์ เบอร์โทร ฯลฯ
+                %tr
+                  %td
+                    %span{:style => "color:#FF0000"} 4. ชื่อคล้ายชื่อสมาชิกที่มีอยู่แล้ว หรือมีข้อความที่ทำให้เกิดความสับสน เช่น ตัวจริง ตัวปลอม
+                %tr
+                  %td
+                    %span{:style => "color:#FF0000"} 5. ใช้ตัวอักษรซ้ำกันมากๆ หรือไม่มีความหมาย เช่น 55555, adsdsfsd	
+                %tr
+                  %td
+                    %span{:style => "color:#FF0000"} 6. เป็นชื่อ web, ชื่อสินค้าและบริการ, ชื่อหน่วยงาน หรือชื่อเข้าข่ายโฆษณา ส่งเสริมการขาย
+
+
+
+
+
+
+
+

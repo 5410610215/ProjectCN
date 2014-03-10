@@ -1,7 +1,10 @@
 %h1 Editing unsolved
+-if session[:role] >= 1
+  = render 'form'
 
-= render 'form'
-
-= link_to 'Show', @unsolved
-\|
-= link_to 'Back', unsolveds_path
+  = link_to 'Show', @unsolved
+  \|
+  = link_to 'Back', unsolveds_path
+-else
+  %div Please Login before use this session
+  %a{:href => "/"} Click Here to login

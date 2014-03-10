@@ -1,108 +1,187 @@
 !!!
-%html{:lang => "en"}
-  %head
-    %title PROBLEMPEDIA | About Us
-    %meta{:charset => "utf-8"}
-    %link{:href => "assets/reset.css", :media => "all", :rel => "stylesheet", :type => "text/css"}
-      %link{:href => "assets/style.css", :media => "all", :rel => "stylesheet", :type => "text/css"}
-        %script{:src => "assets/jquery-1.4.2.min.js", :type => "text/javascript"}
-        %script{:src => "assets/cufon-yui.js", :type => "text/javascript"}
-        %script{:src => "assets/cufon-replace.js", :type => "text/javascript"}
-        %script{:src => "assets/Myriad_Pro_300.font.js", :type => "text/javascript"}
-        %script{:src => "assets/Myriad_Pro_400.font.js", :type => "text/javascript"}
-        %script{:src => "assets/script.js", :type => "text/javascript"}
-          :css
-            color:red;
-  %body#page6
-    / START PAGE SOURCE
-    .wrap
-      %header
-        .container
-          %h1
-            %a{:href => "#"} PROBLEMPEDIA
-          %nav
-            %ul
-              %li
-                %a.m1{:href => "/problempedia"} Home Page
-              %li.current
-                %a.m2{:href => "/abouts"} PROBLEM
-              %li
-                %a.m3{:href => "/abouts"} SEARCH PROBLEM
-              %li
-                %a.m4{:href => "/abouts"} RULES
-              %li.last
-                %a.m5{:href => "/abouts"} ABOUT US
-
-          %form#search-form{:action => "#"}
-            %fieldset
-              .rowElem
-                %input{:type => "text"}
-                  %a{:href => "#"} Search
-
-      .container
-        %aside
-          %h3 Categories
-          %ul.categories
-            %li
-              %span
-                %a{:href => "/unsolveds"} Unsolved Problem
-            %li
-              %span
-                %a{:href => "/solveds"} Solved Problem
-            %li
-              %span
-                %a{:href => "#"} Search Problem
-            %li
-              %span
-                %a{:href => "#"} Rules
-            %li
-              %span
-                %a{:href => "#"} More About Us
-          
-        %section#content
-          %center
+-if session[:role] >= 1
+  %html{:lang => "en"}
+    %head
+      %title PROBLEMPEDIA | About Us
+      %meta{:charset => "utf-8"}
+      %link{:href => "assets/reset.css", :media => "all", :rel => "stylesheet", :type => "text/css"}
+        %link{:href => "assets/style.css", :media => "all", :rel => "stylesheet", :type => "text/css"}
+          %script{:src => "assets/jquery-1.4.2.min.js", :type => "text/javascript"}
+          %script{:src => "assets/cufon-yui.js", :type => "text/javascript"}
+          %script{:src => "assets/cufon-replace.js", :type => "text/javascript"}
+          %script{:src => "assets/Myriad_Pro_300.font.js", :type => "text/javascript"}
+          %script{:src => "assets/Myriad_Pro_400.font.js", :type => "text/javascript"}
+          %script{:src => "assets/script.js", :type => "text/javascript"}
+            :css
+              color:red;
+    %body#page6
+      / START PAGE SOURCE
+      .wrap
+        %header
+          .container
             %h1
-              %h2 
-                Listing 
-                %span{:style => "color:#00FF33;font-size:25px;"}Solved 
-                Problem on Problempedia
+              %a{:href => "#"} PROBLEMPEDIA
+            %nav
+              %ul
+                %li
+                  %a.m1{:href => "/"} Home Page
+                %li
+                  %a.m2{:href => "/unsolveds"} UNSOLVED PROBLEM
+                %li.current
+                  %a.m3{:href => "/sovleds"} SOLVED PROBLEM
+                %li
+                  %a.m4{:href => "/rules"} RULES
+                %li.last
+                  %a.m5{:href => "/abouts"} ABOUT US
 
-            %table{:border => "1", :style => "border-collapse: collapse"}
-              %tr
-                %th{:style => "color:#000000;font-size:15px;width:140px;height:70px"} Priority
-                %th{:style => "color:#000000;font-size:15px;width:200px;height:70px"} Date
-                %th{:style => "color:#000000;font-size:15px;width:120px;height:70px"} Topic
-                %th{:style => "color:#000000;font-size:15px;width:130px;height:70px"} Department
-                %th{:style => "color:#000000;font-size:15px;width:120px;height:70px"} Status
-                %th{:style => "color:#000000;font-size:15px;width:120px;height:70px"} More Detail
-                %th{:style => "color:#000000;font-size:15px;width:120px;height:70px"} Delete
-              - @unsolveds.each do |unsolved|
+            %form#search-form{:action => "#"}
+              %fieldset
+                .rowElem
+                  - if session[:role] >= 1
+                    - @user = session[:user]
+                    %table{:border => "0"}
+                      %tr
+                        %td{:style => "text-align:right;"}
+                          %h4 Welcome #{@user.username}
+                      %tr
+                        %td{:style => "text-align:right;"}
+                          %a{:href => "logout" } Logout
+
+        .container
+          %aside
+            %h3 Categories
+            %ul.categories
+              %li
+                %span
+                  %a{:href => "/unsolveds"} Unsolved Problem
+              %li
+                %span
+                  %a{:href => "/solveds"} Solved Problem
+              %li
+                %span
+                  %a{:href => "/rules"} Rules
+              %li
+                %span
+                  %a{:href => "/abouts"} More About Us
+
+
+          %section#content
+
+          %div
+            %h4= 'Please insert your topic keyword in this field for search the unsolved problem'  
+            %form#search-fodrm{:action => "/unsolveds",:method => 'GET'}
+              %input{:type => "text",:name => "search_value"}
+              %input{:type => "submit",:value => "Search"}
+            %wbr
+            %center
+              %h1
+                %h2 
+                  Listing 
+                  %span{:style => "color:#00CC00;font-size:25px;"}Solved 
+                  Problem on Problempedia
+
+              %table{:class => "table-border",:border => "1", :style => "border-collapse: collapse"}
                 %tr
-                  - if unsolved.status == 1
-                    - if unsolved.priority == 1
-                      %td{:style => "font-size:17px;;height:30px"}
-                        %center= "LOW"
-                    - else 
-                      %td{:style => "font-size:17px;;height:30px"}
-                        %center= "HIGH"
-                    %td{:style => "font-size:17px;;height:30px"}
-                      %center= unsolved.created_at
-                    %td{:style => "font-size:17px;;height:30px"}
-                      %center= unsolved.topic
-                    %td{:style => "font-size:17px;;height:30px"}
-                      %center= unsolved.department
+                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:140px;height:70px"} Priority
+                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:200px;height:70px"} Date
+                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:120px;height:70px"} Topic
+                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:130px;height:70px"} Department
+                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:120px;height:70px"} Status
+                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:120px;height:70px"} More Detail
+                  -if session[:role] == 2
+                    %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:120px;height:70px"} Delete
+                  
+                - @unsolveds.each do |unsolved|
+                  %tr
                     - if unsolved.status == 1
-                      %td{:style => "font-size:17px;;height:30px;color:#00FF33"}
-                        %center= "SOLVED"
-                    %td
-                      %center
-                        %a{:href => "solveds/" + unsolved.id.to_s} Detail
-                    %td{:style => "font-size:17px;;height:30px"}
-                      / %center= link_to 'Delete', unsolved, :method => :delete, :data => { :confirm => 'Are you sure to           delete this problem?' }
-                      %center
-                        %a{:href => "solveds/delete/" + unsolved.id.to_s, :data => { :confirm => 'Are you sure to delete this           problem?' }} Delete
-                    
-          
+                      - if unsolved.priority == 1
+                        %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
+                          %center= "LOW"
+                      - else 
+                        %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
+                          %center= "HIGH"
+                      %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
+                        %center= unsolved.created_at
+                      %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
+                        %center= unsolved.topic
+                      %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
+                        %center= unsolved.department
+                      - if unsolved.status == 1
+                        %td{:class => "table-border",:style => "font-size:17px;;height:30px;color:#00CC00"}
+                          %center= "SOLVED"
+                      %td{:class => "table-border"}
+                        %center
+                          %a{:style => "font-size:17px;;height:30px",:href => "solveds/" + unsolved.id.to_s} Detail
+                      -if session[:role] == 2
+                        %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
+                          / %center= link_to 'Delete', unsolved, :method => :delete, :data => { :confirm => 'Are you sure to           delete this problem?' }
+                          %center
+                            %a{:href => "solveds/delete/" + unsolved.id.to_s, :data => { :confirm => 'Are you sure to delete this           problem?' }} Delete
+-else
+  %html{:lang => "en"}
+    %head
+      %title PROBLEMPEDIA | About Us
+      %meta{:charset => "utf-8"}
+      %link{:href => "assets/reset.css", :media => "all", :rel => "stylesheet", :type => "text/css"}
+        %link{:href => "assets/style.css", :media => "all", :rel => "stylesheet", :type => "text/css"}
+        %link{:href => "assets/table_style.css", :media => "all", :rel => "stylesheet", :type => "text/css"}
+          %script{:src => "assets/jquery-1.4.2.min.js", :type => "text/javascript"}
+          %script{:src => "assets/cufon-yui.js", :type => "text/javascript"}
+          %script{:src => "assets/cufon-replace.js", :type => "text/javascript"}
+          %script{:src => "assets/Myriad_Pro_300.font.js", :type => "text/javascript"}
+          %script{:src => "assets/Myriad_Pro_400.font.js", :type => "text/javascript"}
+          %script{:src => "assets/script.js", :type => "text/javascript"}
+            :css
+              color:red;
+
+    %body#page6
+      / START PAGE SOURCE
+      .wrap
+        %header
+          .container
+            %h1
+              %a{:href => "#"} PROBLEMPEDIA
+            %nav
+              %ul
+                %li
+                  %a.m1{:href => "/"} Home Page
+                %li
+                  %a.m2{:href => "/unsolveds"} UNSOLVED PROBLEM
+                %li.current
+                  %a.m3{:href => "/solveds"} SOLVED PROBLEM
+                %li
+                  %a.m4{:href => "/rules"} RULES
+                %li.last
+                  %a.m5{:href => "/abouts"} ABOUT US
+
+
+        .container
+          %aside
+            %h3 Categories
+            %ul.categories
+              %li
+                %span
+                  %a{:href => "/unsolveds"} Unsolved Problem
+              %li
+                %span
+                  %a{:href => "/solveds"} Solved Problem
+              %li
+                %span
+                  %a{:href => "/rules"} Rules
+              %li
+                %span
+                  %a{:href => "/abouts"} More About Us
+   
+
+          %center
+            %div 
+              %h2 Please Login before use this session
+            %a{:href => "/"} Click Here to login
+            #{@search}
+                   
+               
+                 
             
-                    
+              
+                      
 
