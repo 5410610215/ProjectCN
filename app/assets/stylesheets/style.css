@@ -586,3 +586,18 @@ a.add-button:hover , .add-button a:hover{
 	background: black;
 	color:grey;
 }
+.LOW{
+	background: #00FF37;
+	border-color:green;
+}
+.HIGH{
+	background: red;
+	border-color:orange;
+}
+.status-circle{
+	width: 15px;
+	height: 15px;
+	border: 1px solid;
+	border-radius: 100%;
+	margin-left: 5px;
+}

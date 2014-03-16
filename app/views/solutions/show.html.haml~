@@ -59,13 +59,13 @@
             %center
               %p{:style => "color:#00CC00;font-size:25px;"}
                 = notice
-              %table{:style => "width: 100%"}
+              %table{:style => "background-color: #4F4F4F; width: 100%"}
                 %tr
                   %td{:style => "color:#000000; width: 20%"}
                     %h3
                       Topic
                   %td{:style => "font-size:17px;height:30px; width: 5%;color:#000000"} :
-                  %td{:class => "table-border",:colspan => "2", :width => "550px",:style => "font-size:17px;color:#000000;height:40px;text-align:left;width: 546px;word-wrap: break-word;display:block;overflow-y:scroll;color:000000"}
+                  %td{:class => "table-border",:colspan => "2", :width => "550px",:style => "font-size:17px;color:#000000;height:40px;text-align:left;width: 546px;word-wrap: break-word;display:block;overflow-y:scroll;color:white"}
                     - @problem_id = Unsolved.find(@solution.topic_id)
                     = @problem_id.topic
                 %tr
@@ -73,14 +73,14 @@
                     %h3 
                       Solution
                   %td{:style => "font-size:17px;height:30px; width: 5%;color:#000000"} :
-                  %td{:class => "table-border",:colspan => "2", :width => "550px",:style => "font-size:17px;color:#000000;height:100px;text-align:left;width: 546px;word-wrap: break-word;display:block;overflow-y:scroll;color:000000"}
+                  %td{:class => "table-border",:colspan => "2", :width => "550px",:style => "font-size:17px;color:#000000;height:100px;text-align:left;width: 546px;word-wrap: break-word;display:block;overflow-y:scroll;color:white"}
                     = @solution.solution
                 %tr
                   %td{:style => "color:#000000; width: 20%"}
                     %h3 
                       User
                   %td{:style => "font-size:17px;height:30px; width: 5%;color:#000000"} :
-                  %td{:style => "font-size:17px;height:30px;color:000000"}
+                  %td{:style => "font-size:17px;height:30px;color:white"}
                     = @solution.user
                 %tr
                   %td{:style => "color:#000000; width: 20%"}

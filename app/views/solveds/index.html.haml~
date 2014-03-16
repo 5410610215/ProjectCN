@@ -20,7 +20,7 @@
         %header
           .container
             %h1
-              %a{:href => "#"} PROBLEMPEDIA
+              %a{:href => "/"} PROBLEMPEDIA
             %nav
               %ul
                 %li
@@ -28,7 +28,7 @@
                 %li
                   %a.m2{:href => "/unsolveds"} UNSOLVED PROBLEM
                 %li.current
-                  %a.m3{:href => "/sovleds"} SOLVED PROBLEM
+                  %a.m3{:href => "/solveds"} SOLVED PROBLEM
                 %li
                   %a.m4{:href => "/rules"} RULES
                 %li.last
@@ -68,10 +68,11 @@
           %section#content
 
           %div
-            %h4= 'Please insert your topic keyword in this field for search the unsolved problem'  
-            %form#search-fodrm{:action => "/unsolveds",:method => 'GET'}
+            %h4= 'Please insert your topic keyword in this field for search the solved problem'  
+            %form#search-fodrm{:action => "/solveds",:method => 'GET'}
               %input{:type => "text",:name => "search_value"}
               %input{:type => "submit",:value => "Search"}
+
             %wbr
             %center
               %h1
@@ -80,43 +81,48 @@
                   %span{:style => "color:#00CC00;font-size:25px;"}Solved 
                   Problem on Problempedia
 
-              %table{:class => "table-border",:border => "1", :style => "border-collapse: collapse"}
+              %table{:style => "border-collapse: collapse"}
                 %tr
-                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:140px;height:70px"} Priority
-                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:200px;height:70px"} Date
-                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:120px;height:70px"} Topic
-                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:130px;height:70px"} Department
-                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:120px;height:70px"} Status
-                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:120px;height:70px"} More Detail
-                  -if session[:role] == 2
-                    %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:120px;height:70px"} Delete
+                  %th
+                    %div{:class => "HIGH status-circle"}
+                  %th{:style => "font-size:15px;height:30px;color:#FF0000;text-align:left;"}
+                    Priority:Urgent
+                %tr
+                  %th  
+                    %div{:class => "LOW status-circle"}
+                  %th{:style => "font-size:15px;height:30px;color:#00CC00;text-align:left;"}
+                    Priority:Normal
+                %tr
+                  %th{:class => "",:style => "color:#000000;font-size:16px;height:50px;width:30px"}  
+                  %th{:class => "table-border",:style => "color:#000000;font-size:16px;width:100px;height:50px"} Date
+                  %th{:class => "table-border",:style => "color:#000000;font-size:16px;width:295px;height:50px"} Topic
+                  %th{:class => "table-border",:style => "color:#000000;font-size:16px;width:110px;height:50px"} Department
+                  %th{:class => "table-border",:style => "color:#000000;font-size:16px;width:85px;height:50px"} Status
+                 
+                  
                   
                 - @unsolveds.each do |unsolved|
-                  %tr
+                  %tr{:class => "table-border"}
                     - if unsolved.status == 1
                       - if unsolved.priority == 1
-                        %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
-                          %center= "LOW"
+                        %td{:class => "",:style => "font-size:17px;;height:30px"}
+                          %div{:class => "LOW status-circle"}
                       - else 
-                        %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
-                          %center= "HIGH"
+                        %td{:class => "",:style => "font-size:17px;;height:30px"}
+                          %div{:class => "HIGH status-circle"}
                       %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
-                        %center= unsolved.created_at
-                      %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
-                        %center= unsolved.topic
+                        %center= unsolved.updated_at.strftime("%d %b %Y")
+                      %td{:style => "text-align:left;"}
+                        %a{:class => "table-border topic-trim",:style => "font-size:17px;height:30px;margin-left:2px;",:href => "solveds/" + unsolved.id.to_s}= unsolved.topic
                       %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
                         %center= unsolved.department
                       - if unsolved.status == 1
-                        %td{:class => "table-border",:style => "font-size:17px;;height:30px;color:#00CC00"}
+                        %td{:class => "table-border",:style => "font-size:17px;height:30px;color:#00CC00"}
                           %center= "SOLVED"
-                      %td{:class => "table-border"}
-                        %center
-                          %a{:style => "font-size:17px;;height:30px",:href => "solveds/" + unsolved.id.to_s} Detail
-                      -if session[:role] == 2
-                        %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
-                          / %center= link_to 'Delete', unsolved, :method => :delete, :data => { :confirm => 'Are you sure to           delete this problem?' }
-                          %center
-                            %a{:href => "solveds/delete/" + unsolved.id.to_s, :data => { :confirm => 'Are you sure to delete this           problem?' }} Delete
+
+                     
+
+                      
 -else
   %html{:lang => "en"}
     %head
@@ -140,7 +146,7 @@
         %header
           .container
             %h1
-              %a{:href => "#"} PROBLEMPEDIA
+              %a{:href => "/"} PROBLEMPEDIA
             %nav
               %ul
                 %li

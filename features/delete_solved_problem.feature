@@ -22,6 +22,7 @@ And I fill in "username" with "admin"
 And I fill in "password" with "admin"
 And I press "Login"
 When I go to solveds page
+When I follow "Internet"
 When I follow "Delete"
 Then I should be on solveds page
 And I should not see "Internet"

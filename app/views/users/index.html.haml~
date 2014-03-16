@@ -71,25 +71,25 @@
           %h1 Listing users
           -if session[:role] == 2
             %center
-              %table{:class => "table-border",:border => "1"}
+              %table{:class => "table-border",:border => "1",:style => "width:100%"}
                 %tr
-                  %th{:class => "table-border"} 
-                    %h2 Username
-                  %th{:class => "table-border"}  
-                    %h2 Password
-                  %th{:class => "table-border"}
-                    %h2 Show 
-                  %th{:class => "table-border"}
-                    %h2 Edit 
-                  %th{:class => "table-border"} 
-                    %h2 Delete
+                  %th{:class => "table-border",:style => "font-size:16px;height:60px"} 
+                    Username
+                  %th{:class => "table-border",:style => "font-size:16px;height:60px"}  
+                    Password
+                  %th{:class => "table-border",:style => "font-size:16px;height:60px"}
+                    Show 
+                  %th{:class => "table-border",:style => "font-size:16px;height:60px"}
+                    Edit 
+                  %th{:class => "table-border",:style => "font-size:16px;height:60px"} 
+                    Delete
             
                 - @users.each do |user|
                   %tr
-                    %td{:class => "table-border"}= user.username
-                    %td{:class => "table-border"}= user.password
-                    %td{:class => "table-border"}= link_to 'Show', user
-                    %td{:class => "table-border"}= link_to 'Edit', edit_user_path(user)
+                    %td{:class => "table-border",:style => "font-size:17px;height:40px"}= user.username
+                    %td{:class => "table-border",:style => "font-size:17px;height:40px"}= user.password
+                    %td{:class => "table-border",:style => "font-size:17px;height:40px"}= link_to 'Show', user
+                    %td{:class => "table-border",:style => "font-size:17px;height:40px"}= link_to 'Edit', edit_user_path(user)
                     - if user.username != "admin"      
                       %td{:class => "table-border"}= link_to 'Delete', user, :method => :delete, :data => { :confirm => 'Are you   sure?  '   }
           
@@ -97,6 +97,8 @@
               %br
               %h4= link_to 'Add New User', new_user_path
           -else
-            %div Neet to be admin
-            %a{:href => "/"} Click Here to login
+            %center
+              %div 
+                %h2 You must to be admin
+              %a{:href => "/"} Click Here to login
                           

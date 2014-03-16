@@ -1,5 +1,5 @@
 !!!
--if session[:role] >= 1
+-if session[:role] >= 2
   %html{:lang => "en"}
     %head
       %title PROBLEMPEDIA | About Us
@@ -33,6 +33,7 @@
                   %a.m4{:href => "/rules"} RULES
                 %li.last
                   %a.m5{:href => "/abouts"} ABOUT US
+
             %form#search-form{:action => "#"}
               %fieldset
                 .rowElem
@@ -44,7 +45,7 @@
                           %h4 Welcome #{@user.username}
                       %tr
                         %td{:style => "text-align:right;"}
-                          %a{:href => "logout" } Logout
+                          %a{:href => "/logout" } Logout
             
 
         .container
@@ -65,7 +66,7 @@
                   %a{:href => "/abouts"} More About Us
             
           %section#content
-
+            %wbr
             %center
               %h1
                 %h2 Add new Problem to Problempedia

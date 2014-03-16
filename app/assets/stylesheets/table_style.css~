@@ -1,8 +1,6 @@
 .table-border{
-  border:1px solid;
-  text-align:center;
-  vertical-align:middle;
+  text-align:left;
 }
 table{
-  margin:10px 0px;
+  margin:20px 0px;
 }

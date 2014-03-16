@@ -45,7 +45,7 @@
                           %h4 Welcome #{@user.username}
                       %tr
                         %td{:style => "text-align:right;"}
-                          %a{:href => "logout" } Logout
+                          %a{:href => "/logout" } Logout
 
             
 
@@ -69,115 +69,125 @@
           %section#content
             %wbr
             %center
+              %table
+                %tr
+                  -if session[:role] == 2
+                    %td
+                      %h3{:style => "font-size:15px;font-weight:bold;",:class => "delete-button" ,}
+                        %a{:class => "round-border",:href => "delete/" + @unsolved.id.to_s,:style => "font-size:15px;font-weight:bold;", :data => {   :confirm => 'Are you sure to delete this problem?' }} Delete This Problem?
+                   
+                  %td
+                    %h3{:class => "back-problem",:style => "font-size:15px;font-weight:bold;"}= link_to 'Back', solveds_path
+
+
               %p{:style => "color:#00DD00;font-size:25px;"}
                 = notice
-              %table{:class => "table-border",:border => "1"}
-                %tr
-                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:18%;height:70px"}
-                    %center 
-                      Priority
-                  %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
-                    %center 
-                      - if @unsolved.priority == 1 
-                        = "LOW"
-                      - else
-                        = "HIGH"
-                %tr
-                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:18%;height:70px"}
-                    %center 
-                      Topic
-                  %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
-                    %center 
-                      = @unsolved.topic
-                %tr
-                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:18%;height:70px"}
-                    %center 
-                      Department
-                  %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
-                    %center 
-                      = @unsolved.department
-                %tr
-                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:18%;height:70px"}
-                    %center 
-                      Details
-                  %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
-                    %center 
-                      = @unsolved.details
-                %tr
-                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:18%;height:70px"}
-                    %center 
-                      Status
-                  %td{:class => "table-border",:style => "font-size:17px;height:30px;color:#00FF33;"}
-                    %center 
-                      - if @unsolved.status == 1 
-                        = "SOLVED"
-                      - else
-                        = "UNSOLVED"
 
-            
+
+                
+      
+            %table{:style => "background-color: ; width: 100%"}
+              %tr
+                %td{:style => "color:#000000; width: 20%"}
+                  %h3
+                    Priority
+                %td{:style => "font-size:17px;height:30px; width: 5%;color:#000000"} :
+                %td{:style => "font-size:17px;height:30px;color:000000"}
+                  - if @unsolved.priority == 1 
+                    = "LOW"
+                  - else
+                    = "HIGH"
+              %tr
+                %td{:style => "color:#000000"}
+                  %h3
+                    Topic
+                %td{:style => "font-size:17px;height:30px;color:#000000"} :
+                %td{:class => "table-border",:colspan => "2", :width => "550px",:style => "font-size:17px;color:#000000;height:40px;text-align:left;width: 546px;word-wrap: break-word;display:block;overflow-y:scroll;color:000000"}
+                  %h3
+                    = @unsolved.topic
+              %tr
+                %td{:style => "color:#000000"}
+                  %h3
+                    Department
+                %td{:style => "font-size:17px;height:30px;color:#000000"} :
+                %td{:style => "font-size:17px;height:30px;color:#000000"}
+                  %h3
+                    = @unsolved.department
+              %tr
+                %td{:style => "color:#000000"}
+                  %h3
+                    Details
+                %td{:style => "font-size:17px;height:30px;color:#000000"} :
+                %td{:class => "table-border",:colspan => "2", :width => "550px",:style => "font-size:17px;color:#000000;height:100px;text-align:left;width: 546px;word-wrap: break-word;display:block;overflow-y:scroll;color:000000"}
+                  %h3
+                    = @unsolved.details
+              %tr
+                %td{:style => "color:#000000"}
+                  %h3
+                    Status
+                %td{:style => "font-size:17px;height:30px;color:#000000"} :
+                - if @unsolved.status == 0
+                  %td{:style => "font-size:17px;height:30px;color:#F00;"}
+                    %h3
+                      = "UNSOLVED"
+                - else
+                  %td{:style => "font-size:17px;height:30px;color:#0C0;"}
+                    %h3
+                      = "SOLVED"      
+
+              %wbr
+
               %center
                 - @solutions = Solution.all
                 - @solutions.each do |solution|
                   - if solution.topic_id == @unsolved.id
                     - if solution.worked == 1
-
-                      %table{:class => "table-border",:border => "1", :style => "border-collapse: collapse;height:70px"}
+                      %table{:class => "table-border",:border => "1", :style => "border-collapse: collapse;height:70px;width:550px;table-layout:fixed;"}
                         %tr
                           %td
                             %table{:border => "0"}
                               %tr
                                 %th{:width => "208px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;"} Solution
                                 -if session[:role] == 2
-                                  %th{:width => "208px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;"}
+                                  %th{:width => "208px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;",:class => "delete-button"}
                                     %a{:href => "/solution/delete/" + solution.id.to_s, :data => { :confirm => 'Are you sure to delete this solution?' }} Delete
                               %tr
-                                %td{:class => "table-border",:colspan => "2", :width => "416px",:style => "font-size:17px;color:#000000;height:50px;text-align:left;"}= solution.solution
+                                %td{:class => "table-border",:colspan => "2", :width => "416px",:style => "font-size:17px;color:#000000;height:150px;text-align:left;width: 546px;word-wrap: break-word;display:block;overflow-y:scroll;color:#000000"}= solution.solution
                         %tr
                           %td
-                            %table{:border => "0"}
+                            %table{:border => "0",:style => "margin:10px 0px"}
                               %tr
-                                %th{:width => "100px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;"} User
-                                %th{:width => "100px",:style => "border-right:1px solid;font-size:17px;color:#000000;vertical-align:middle;"}= solution.user
-                                %th{:width => "100px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;"} Date
-                                %th{:width => "100px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;"}=solution.created_at
-                      %wbr
+                                %th{:width => "150px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;"} User
+                                %th{:width => "150px",:style => "border-right:1px solid;font-size:17px;color:#000000;vertical-align:middle;"}=solution.user
+                                %th{:width => "150px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;"} Date
+                                %th{:width => "150px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;"}=solution.created_at.strftime("%d %b %Y")
+                        %wbr
                 - @solutions.each do |solution|
                   - if solution.topic_id == @unsolved.id
                     - if solution.worked == 0
-                      %table{:class => "table-border",:border => "1", :style => "border-collapse: collapse;height:70px"}
+                      %table{:class => "table-border",:border => "1", :style => "border-collapse: collapse;height:70px;width:550px;table-layout:fixed;"}
                         %tr
                           %td
-                            %table{:border => "0"}
+                            %table{:border => "0",:style => "margin:10px 0px"}
                               %tr
                                 %th{:width => "208px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;"} Solution
                                 -if session[:role] == 2
-                                  %th{:width => "208px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;"}
+                                  %th{:width => "208px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;",:class => "delete-button"}
                                     %a{:href => "/solution/delete/" + solution.id.to_s, :data => { :confirm => 'Are you sure to delete this solution?' }} Delete
                               %tr
-                                %td{:class => "table-border",:colspan => "2", :width => "416px",:style => "font-size:17px;color:#000000;height:50px;text-align:left;"}= solution.solution
+                                %td{:class => "table-border",:colspan => "2", :width => "416px",:style => "font-size:17px;color:#000000;height:150px;text-align:left;width: 546px;word-wrap: break-word;display:block;overflow-y:scroll;color:#000000"}= solution.solution
                         %tr
                           %td
                             %table{:border => "0"}
                               %tr
-                                %th{:width => "100px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;"} User
-                                %th{:width => "100px",:style => "border-right:1px solid;font-size:17px;color:#000000;vertical-align:middle;text-align:middle;"}= solution.user
-                                %th{:width => "100px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;"} Date
-                                %th{:width => "100px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;"}=solution.created_at
+                                %th{:width => "150px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;"} User
+                                %th{:width => "150px",:style => "border-right:1px solid;font-size:17px;color:#000000;vertical-align:middle;text-align:middle;"}=solution.user
+                                %th{:width => "150px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;"} Date
+                                %th{:width => "150px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;"}=solution.created_at.strftime("%d %b %Y")
                       %wbr
+  
 
 
-              
-              %center
-                %table
-                  %tr
-                    -if session[:role] == 2
-                      %td
-                        %h3{:style => "font-size:15px;font-weight:bold;"}
-                          %a{:href => "delete/" + @unsolved.id.to_s,:style => "font-size:15px;font-weight:bold;", :data => {   :confirm => 'Are you sure to delete this problem?' }} Delete This Problem?
-                      %td
-                        |
-                    %td
-                      %h3{:style => "font-size:15px;font-weight:bold;"}= link_to 'Back', solveds_path
 
 -else
   %div Please Login before use this session

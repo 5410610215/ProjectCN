@@ -57,7 +57,7 @@ class UnsolvedsController < ApplicationController
    
     respond_to do |format|
       if @topic == '' || @department == '' || @details == ''
-        format.html { redirect_to '/unsolveds/new', notice: 'Please fill in all the fields that required.' }
+        format.html { redirect_to '/unsolveds/new', notice: '>>>>>>>>>Please fill in all the fields that required.<<<<<<<<<<' }
         format.json { render json: @topic }
       else
          if @unsolved.save

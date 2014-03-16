@@ -66,19 +66,17 @@
                   %a{:href => "/abouts"} More About Us
 
           %section#content
+           
+          %center 
+            %h1
+              %h2 
+                Editing unsolved
 
-            %wbr
-            %center 
-  
-              %h1
-                %h2 
-                  Editing unsolved
-  
-                = render 'form'
-            
-                = link_to 'Show', @unsolved
-                \|
-                = link_to 'Back', unsolveds_path
+              = render 'form'
+          
+              = link_to 'Show', @unsolved
+              \|
+              = link_to 'Back', unsolveds_path
   
                 
 -else

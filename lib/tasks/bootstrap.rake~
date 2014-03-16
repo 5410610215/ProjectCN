@@ -1,0 +1,5 @@
+ namespace :bootstrap do
+      desc "Add the default user"
+      task :default_user => :environment do
+        User.create( :username => 'admin', :password => 'admin' )
+      end

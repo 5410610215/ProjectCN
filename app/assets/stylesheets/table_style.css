@@ -3,6 +3,10 @@
   text-align:center;
   vertical-align:middle;
 }
+a.table-border{
+	border:none;
+	color:#444;
+}
 table{
   margin:20px 0px;
 }

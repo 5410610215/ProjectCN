@@ -34,7 +34,6 @@
                 %a.m4{:href => "/rules"} RULES
               %li.last
                 %a.m5{:href => "/abouts"} ABOUT US
-
           %form#search-form{:action => "#"}
             %fieldset
               .rowElem

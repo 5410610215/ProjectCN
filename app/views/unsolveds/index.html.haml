@@ -68,7 +68,11 @@
           %section#content
             
           %div
-            
+            %h4= 'Please insert your topic keyword in this field for search the unsolved problem'  
+            %form#search-fodrm{:action => "/unsolveds",:method => 'GET'}
+              %input{:type => "text",:name => "search_value"}
+              %input{:type => "submit",:value => "Search"}
+
 
             %wbr
             %center
@@ -78,46 +82,60 @@
                   %span{:style => "color:#FF0000;font-size:25px;"}Unsolved 
                   Problem on Problempedia
 
-              %table{:style => "border-collapse: collapse;border:1px solid;"}
+              %table{:style => "border-collapse: collapse;"}
                 %tr
-                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:140px;height:70px"} Priority
-                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:200px;height:70px"} Date
-                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:120px;height:70px"} Topic
-                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:130px;height:70px"} Department
-                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:120px;height:70px"} Status
-                  %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:120px;height:70px"} Detail
+                  %th
+                    %div{:class => "HIGH status-circle"}
+                  %th{:style => "font-size:15px;height:30px;color:#FF0000;text-align:left;"}
+                    Priority:Urgent
+                %tr
+                  %th  
+                    %div{:class => "LOW status-circle"}
+                  %th{:style => "font-size:15px;height:30px;color:#00CC00;text-align:left;"}
+                    Priority:Normal
+                
+
+                %tr
+                  %th{:class => "",:style => "color:#000000;font-size:16px;height:50px;width:30px"}  
+                  %th{:class => "table-border",:style => "color:#000000;font-size:16px;width:100px;height:50px"} Date
+                  %th{:class => "table-border",:style => "color:#000000;font-size:16px;width:295px;height:50px"} Topic
+                  %th{:class => "table-border",:style => "color:#000000;font-size:16px;width:110px;height:50px"} Department
+                  %th{:class => "table-border",:style => "color:#000000;font-size:16px;width:85px;height:50px"} Status
+                  
                   -if session[:role] == 2
-                    %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:120px;height:70px"} Delete
-                    %th{:class => "table-border",:style => "color:#000000;font-size:15px;width:120px;height:70px"} Edit
+                   
+                    %th{:class => "table-border",:style => "color:#000000;font-size:16px;width:35px;height:50px"} Edit
                 - @unsolveds.each do |unsolved|
                   %tr{:class => "table-border"}
                     - if unsolved.status == 0
                       - if unsolved.priority == 1
-                        %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
-                          %center= "LOW"
+                        %td{:class => "",:style => "font-size:17px;;height:30px"}
+                          %div{:class => "LOW status-circle"}
                       - else 
-                        %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
-                          %center= "HIGH"
+                        %td{:class => "",:style => "font-size:17px;;height:30px"}
+                          %div{:class => "HIGH status-circle"}
                       %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
                         %center= unsolved.created_at.strftime("%d %b %Y")
-                      %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
-                        %center= unsolved.topic
+                      %td{:style => "text-align:left;"}
+                        %a{:class => "table-border topic-trim",:style => "font-size:17px;height:30px;margin-left:2px;",:href => "unsolveds/" + unsolved.id.to_s}
+                          = unsolved.topic
                       %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
                         %center= unsolved.department
                       - if unsolved.status == 0
-                        %td{:class => "table-border",:style => "font-size:17px;;height:30px;color:#FF0000"}
+                        %td{:class => "table-border",:style => "font-size:13px;;height:30px;color:#FF0000"}
                           %center= "UNSOLVED"
-                      %td
-                        %center
-                          %a{:class => "table-border",:style => "font-size:17px;height:30px",:href => "unsolveds/" + unsolved.id.to_s} Detail
+                      
                       -if session[:role] == 2
-                        %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
-                          %center= link_to 'Delete', unsolved, :method => :delete, :data => { :confirm => 'Are you sure to delete this problem?' }
-                        %td{:class => "table-border",:style => "font-size:17px;;height:30px"}
+                        
+                        %td{:class => "table-border",:style => "font-size:14px;;height:30px"}
                           %center= link_to 'Edit', edit_unsolved_path(unsolved)
 
                 -if session[:role] == 2  
                   %p{:class => "add-button",:style => "font-size:15px;font-weight:bold;width:60px;"}= link_to 'Add new problem', new_unsolved_path
+            %table{:style => "border-collapse: collapse"}
+              
+  
+                
 -else
   %html{:lang => "en"}
     %head
@@ -141,7 +159,7 @@
         %header
           .container
             %h1
-              %a{:href => "#"} PROBLEMPEDIA
+              %a{:href => "/"} PROBLEMPEDIA
             %nav
               %ul
                 %li
