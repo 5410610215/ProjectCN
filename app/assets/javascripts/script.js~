@@ -1,4 +1,4 @@
-alert("Hell");
+alert("Hell")
 $(document).ready(function(){
   $("a.new_window").attr("target", "_blank");
   $(".topic-trim").text(function(index, text) {
