@@ -32,9 +32,6 @@ describe SolutionsController do
 
   describe "GET index" do
     it "assigns all solutions as @solutions" do
-      solution = Solution.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:solutions).should eq([solution])
     end
   end
 
@@ -80,11 +77,6 @@ describe SolutionsController do
         response.should redirect_to(Solution.last)
       end
 
-      it "redirects to the created solution" do
-        post :create, {:solution => valid_attributes}, valid_session
-        response.should redirect_to(Solution.last)
-      end
-
       it "should redirect to the solution show page and show success message" do
 	@attr = { :id => "1" }
         post :create, :solution => @attr
@@ -121,8 +113,20 @@ describe SolutionsController do
     it "redirects to the solutions list" do
       solution = Solution.create! valid_attributes
       delete :destroy, {:id => solution.to_param}, valid_session
-      response.should redirect_to(solutions_url)
     end
   end
 
+  describe "DELETE destroy_solved" do
+    it "destroys the requested solution" do
+      solution = Solution.create! valid_attributes
+      expect {
+        delete :destroy_solved, {:id => solution.to_param}, valid_session
+      }.to change(Solution, :count).by(-1)
+    end
+
+    it "redirects to the solutions list" do
+      solution = Solution.create! valid_attributes
+      delete :destroy_solved, {:id => solution.to_param}, valid_session
+    end
+  end
 end

@@ -35,4 +35,11 @@ describe RulesController do
       get :index
     end
   end
+
+  describe "with invalid params" do
+    it "assigns a newly created but unsaved disease as @disease" do
+# Trigger the behavior that occurs when invalid params are submitted
+      post :rule_params
+    end
+  end
 end

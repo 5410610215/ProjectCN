@@ -139,7 +139,7 @@ describe UsersController do
 
   describe "Check user" do
     it "#" do
-      get :check_user, :user => valid_attributes
+      get :check_user, :user => @attr
     end
   end
 

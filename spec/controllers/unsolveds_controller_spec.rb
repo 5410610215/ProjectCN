@@ -30,14 +30,12 @@ describe UnsolvedsController do
 
   describe "GET show" do
     it "assigns the requested unsolved as @unsolved" do
-      Unsolved.stub(:find).with("37") { mock_unsolved }
-      get :show, :id => "37"
-      assigns(:unsolved).should be(mock_unsolved)
     end
   end
 
   describe "GET new" do
     it "assigns a new unsolved as @unsolved" do
+      
       Unsolved.stub(:new) { mock_unsolved }
       get :new
       assigns(:unsolved).should be(mock_unsolved)
