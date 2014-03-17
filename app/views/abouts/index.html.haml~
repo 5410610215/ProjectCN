@@ -26,24 +26,27 @@
       %header
         .container
           %h1
-            %a{:href => "#"} PROBLEMPEDIA
+            %a{:href => "/"} PROBLEMPEDIA
           %nav
             %ul
               %li
-                %a.m1{:href => "http://localhost:3000"} Home Page
+                %a.m1{:href => "/"} Home Page
               %li
-                %a.m2{:href => "/abouts"} PROBLEM
+                %a.m2{:href => "/unsolveds"} Unsolved Problem
               %li
-                %a.m3{:href => "/abouts"} SEARCH PROBLEM
+                %a.m3{:href => "/solveds"} Solved Problem
               %li
-                %a.m4{:href => "/abouts"} RULES
+                %a.m4{:href => "/rules"} RULES
               %li.last.current
                 %a.m5{:href => "/abouts"} ABOUT US
           %form#search-form{:action => "#"}
             %fieldset
               .rowElem
-                %input{:type => "text"}
-                  %a{:href => "#"} Search
+                - if session[:role] >= 1
+                  - @user = session[:user]
+                  %p Welcome, #{@user.username}
+                  %a{:href => "logout" } Logout      
+         
       .container
         %aside
           %h3 Categories
@@ -56,16 +59,13 @@
                 %a{:href => "/solveds"} Solved Problem
             %li
               %span
-                %a{:href => "#"} Search Problem
-            %li
-              %span
-                %a{:href => "#"} Rules
+                %a{:href => "/rules"} Rules
             %li
               %span
                 %a{:href => "/abouts"} More About Us
             %li
               %span
-                %a{:href => "https://github.com/5410610215/Project"} Link to:Github
+                %a{:href => "https://github.com/5410610215/ProjectCN"} Link to:Github
             %li
               %span
                 %a{:href => "https://www.pivotaltracker.com/s/projects/1012438"} Link to:Pivotaltracker
