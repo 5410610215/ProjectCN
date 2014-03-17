@@ -146,7 +146,7 @@
                           %td
                             %table{:border => "0"}
                               %tr
-                                %th{:width => "208px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;"} Solution
+                                %th{:width => "208px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;background-color:#00CC00"} Solution
                                 -if session[:role] == 2
                                   %th{:width => "208px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;",:class => "delete-button"}
                                     %a{:href => "/solution/delete/" + solution.id.to_s, :data => { :confirm => 'Are you sure to delete this solution?' }} Delete
@@ -169,7 +169,7 @@
                           %td
                             %table{:border => "0",:style => "margin:10px 0px"}
                               %tr
-                                %th{:width => "208px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;"} Solution
+                                %th{:width => "208px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;background-color:blue"} Solution
                                 -if session[:role] == 2
                                   %th{:width => "208px",:style => "font-size:17px;color:#000000;height:50px;vertical-align:middle;",:class => "delete-button"}
                                     %a{:href => "/solution/delete/" + solution.id.to_s, :data => { :confirm => 'Are you sure to delete this solution?' }} Delete
